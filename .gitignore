@@ -16,3 +16,6 @@ hs_err_pid*
 
 # JetBrains
 .idea
+
+# Apple Mac
+.DS_store
