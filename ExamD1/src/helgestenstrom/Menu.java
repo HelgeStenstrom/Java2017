@@ -1,12 +1,21 @@
 package helgestenstrom;
 
+import java.util.Scanner;
 import javax.annotation.processing.SupportedSourceVersion;
 
 public class Menu {
+
+
+    Scanner input;
+    Menu() {
+        input = new Scanner(System.in);
+    }
+
     public void start() {
-        System.out.println("This would start a menu");
-        D1PA d1pa = new D1PA();
-        d1pa.start();
+        cycle();
+//        System.out.println("This would start a menu");
+//        D1PA d1pa = new D1PA();
+//        d1pa.start();
     }
 
     private static String aline = "--------------------------------------------------\n";
@@ -29,7 +38,8 @@ public class Menu {
             if (choice.equals("0"))
                 break;
             else
-                runChoice(choice);
+                System.out.printf("You selected %s \n", choice);
+                //runChoice(choice);
         }
     }
 
@@ -56,7 +66,7 @@ public class Menu {
     private String getChoice()
     {
         System.out.print("Your choice: ");
-        return Console.ReadLine();
+        return input.nextLine();
     }
 
 
