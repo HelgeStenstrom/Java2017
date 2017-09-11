@@ -39,7 +39,7 @@ public class Menu {
                 break;
             else
                 System.out.printf("You selected %s \n", choice);
-                //runChoice(choice);
+                runChoice(choice);
         }
     }
 
@@ -70,7 +70,7 @@ public class Menu {
     }
 
 
-    private void RunChoice(String choice)
+    private void runChoice(String choice)
     {
         Startable exercise;
         exercise = new NoExercise();
