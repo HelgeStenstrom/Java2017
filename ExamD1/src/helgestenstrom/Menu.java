@@ -70,5 +70,49 @@ public class Menu {
     }
 
 
+    private void RunChoice(String choice)
+    {
+        Startable exercise;
+        exercise = new NoExercise();
+        switch (choice)
+        // objects created here have names that are abbreviations of class names.
+        {
+            case "0":
+                System.out.println("This can't happen!");
+                // Can't happen because we will not call the
+                // method if choice == 0.
+                break;
 
+            case "1":
+                exercise = new WholeNumbersForAdd();
+                //exercise.Start();
+                break;
+
+            case "2":
+                exercise = new FloatingPointsNumberWhileAdd();
+                //exercise.Start();
+                break;
+
+            case "3":
+                exercise = new CurrencyConverter();
+                //exercise.Start();
+                break;
+
+            case "4":
+                exercise = new WorkingSchedule();
+                //exercise.Start();
+                break;
+
+            case "5":
+                System.out.println("temperature table");
+                exercise = new TempTable();
+                //exercise.Start();
+                break;
+
+            default:
+                System.out.println("Invalid choice");
+                break;
+        }
+        exercise.Start();
+    }
 }
