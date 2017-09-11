@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        Menu menu = new Menu();
+        Startable menu = new Menu();
         menu.start();
     }
 }

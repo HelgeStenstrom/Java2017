@@ -1,5 +1,5 @@
 package helgestenstrom;
 
-public class Startable {
-    public void Start() {}
+public interface Startable {
+    void start();
 }

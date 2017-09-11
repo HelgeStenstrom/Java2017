@@ -1,6 +1,6 @@
 package helgestenstrom;
 
-public class NoExercise extends Startable {
+public class NoExercise implements Startable {
     @Override
-    public void Start() { }
+    public void start() { }
 }

@@ -1,9 +1,8 @@
 package helgestenstrom;
 
 import java.util.Scanner;
-import javax.annotation.processing.SupportedSourceVersion;
 
-public class Menu {
+public class Menu implements Startable {
 
 
     Scanner input;
@@ -85,34 +84,28 @@ public class Menu {
 
             case "1":
                 exercise = new WholeNumbersForAdd();
-                //exercise.Start();
                 break;
 
             case "2":
                 exercise = new FloatingPointsNumberWhileAdd();
-                //exercise.Start();
                 break;
 
             case "3":
                 exercise = new CurrencyConverter();
-                //exercise.Start();
                 break;
 
             case "4":
                 exercise = new WorkingSchedule();
-                //exercise.Start();
                 break;
 
             case "5":
-                System.out.println("temperature table");
                 exercise = new TempTable();
-                //exercise.Start();
                 break;
 
             default:
                 System.out.println("Invalid choice");
                 break;
         }
-        exercise.Start();
+        exercise.start();
     }
 }
