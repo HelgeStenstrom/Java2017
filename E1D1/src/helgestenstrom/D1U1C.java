@@ -10,6 +10,8 @@ public class D1U1C implements Startable{
     private Scanner input;
 
     public void start() {
+        // Start problem C.
+
         input = new Scanner(System.in);
 
         printInstructions();
@@ -20,6 +22,8 @@ public class D1U1C implements Startable{
     }
 
     private void printInstructions() {
+        // Print a header for problem C.
+
         System.out.println();
         System.out.println("Du är i en lastbil, där pengar ska placeras i högar.");
         System.out.println("Högarna ordnas i rader och kolumner på lastbilens golv.");

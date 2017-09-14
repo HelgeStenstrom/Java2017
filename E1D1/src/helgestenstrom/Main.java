@@ -6,8 +6,8 @@ package helgestenstrom;
 
 public class Main {
 
+    // Jag försöker hålla Main så enkel som möjligt. Anropa Menu() som gör jobbet!
     public static void main(String[] args) {
-	// write your code here
         Startable menu = new Menu();
         menu.start();
     }

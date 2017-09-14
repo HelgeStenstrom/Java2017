@@ -11,17 +11,14 @@ public class D1U1D implements Startable {
     private Scanner input;
 
     public void start() {
+        // Start problem D
+
         input = new Scanner(System.in);
 
-        printInstructions();
+        System.out.println();
         int numberOfGrades = askForInt("Hur många studenter finns det? ");
 
         getGradesAndPrintStats(numberOfGrades);
-        System.out.println();
-    }
-
-    private void printInstructions() {
-        System.out.println();
         System.out.println();
     }
 
@@ -31,7 +28,7 @@ public class D1U1D implements Startable {
     }
 
     private void getGradesAndPrintStats(int count) {
-        //String grade;
+        // Define variables that holds counts for grades.
         int invalids = 0;
         int Us = 0;
         int threes = 0;
@@ -40,6 +37,7 @@ public class D1U1D implements Startable {
         int total = 0;
 
         for (int stud = 1 ; stud <= count; stud++) {
+            // Ask for each student.
             String prompt = String.format("Ge resultat för student #%d", stud);
             int points = askForInt(prompt);
 
@@ -49,6 +47,7 @@ public class D1U1D implements Startable {
             else if (points < 36) fours += 1;
             else fives += 1;
 
+            // Update the total, used for mean points
             if ((points >= 0) && (points <= 40)) {
                 total += points;
             }

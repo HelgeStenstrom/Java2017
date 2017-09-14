@@ -14,17 +14,20 @@ public class D1U1B implements Startable{
 
 
     public void start() {
+        // Start the problem B.
         input = new Scanner(System.in);
         banner();
-        cycle();
+        uiLoop();
     }
 
     private void banner() {
+        // Print a header for Problem B
         System.out.println("You will be asked some questions.");
         System.out.println();
     }
 
-    private void cycle() {
+    private void uiLoop() {
+        // Cycle this until the user is satisfied
         String satisfied;
         do {
             askQuestions();
@@ -40,6 +43,7 @@ public class D1U1B implements Startable{
     }
 
     private void askQuestions() {
+        // Collect data from the use
         gender = askFor("What is your gender?");
 
         String response = askFor("Are you a register customer? (y/n)");
@@ -55,6 +59,7 @@ public class D1U1B implements Startable{
     }
 
     private int askForInt(String s) {
+        // A wrapper simplifies things.
         System.out.printf("%s ", s);
         return Integer.parseInt(input.nextLine());
     }

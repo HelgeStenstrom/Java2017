@@ -12,8 +12,10 @@ public class Menu implements Startable {
     private Scanner input;
 
     public void start() {
+        // The only public method. It starts the main menu.
+
         input = new Scanner(System.in);
-        cycle();
+        uiLoop();
         System.out.println("Thank you for running Helge Stenström's program.");
     }
 
@@ -37,7 +39,7 @@ public class Menu implements Startable {
         return input.nextLine();
     }
 
-    private void cycle()
+    private void uiLoop()
     // Main UI loop. Repeat until exit is selected by "0"
     {
         while (true)
@@ -47,12 +49,15 @@ public class Menu implements Startable {
             if (choice.equals("0"))
                 break;
             else
+                // If the choice is valid, run it!
                 runChoice(choice);
         }
 
     }
 
     private void runChoice(String choice) {
+
+        // The default is to not do anything. It will most likely be overridden.
         Startable subprogram = new NullStartable();
 
         switch (Integer.parseInt(choice)){
