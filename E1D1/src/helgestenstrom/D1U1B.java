@@ -35,34 +35,37 @@ public class D1U1B implements Startable{
 
             printAnswers();
 
-            System.out.print("Are you satisfied with your answers? (y/n) ");
-            satisfied = input.nextLine();
+            satisfied = askFor("Are you satisfied with your answers? (y/n)");
             System.out.printf("Your answer: '%s' \n", satisfied);
-            if (satisfied.equals("y")){
-                System.out.println("you are satisfied");
-            }
 
         } while (!(satisfied.equals("y")));
 
+        System.out.println("Thanks for participating in the exercise!");
     }
 
     private void askQuestions() {
-        System.out.print("What is your gender? ");
-        gender = input.nextLine();
+        gender = askFor("What is your gender?");
 
-        System.out.print("Are you a register customer? (y/n) ");
-        String response = input.nextLine();
+        String response = askFor("Are you a register customer? (y/n)");
         isRegistered = response.equals("y");
 
-        System.out.print("What is your age? ");
-        int age = input.nextInt();
-
-        if (age <= 10) ageRange = "0-10";
+        int age = askForInt("What is your age?");
+        if (age <= 20) ageRange = "0-20";
                 else {
-            if (age <= 20) ageRange = "11-20";
-            else ageRange = "21+";
+            if (age <= 40) ageRange = "21-40";
+            else ageRange = "41+";
             }
         System.out.println();
+    }
+
+    private int askForInt(String s) {
+        System.out.printf("%s ", s);
+        return Integer.parseInt(input.nextLine());
+    }
+
+    private String askFor(String s) {
+        System.out.printf("%s: ", s);
+        return input.nextLine();
     }
 
     private void printAnswers() {
