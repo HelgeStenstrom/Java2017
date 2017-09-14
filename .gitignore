@@ -19,3 +19,6 @@ hs_err_pid*
 
 # Apple Mac
 .DS_store
+
+# Compressed files
+*.zip
