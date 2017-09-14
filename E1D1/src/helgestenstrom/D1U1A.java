@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2017. Helge Stenström
+ */
+
 package helgestenstrom;
 
 // This exercise has variables: input, sum, i

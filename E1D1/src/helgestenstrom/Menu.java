@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2017. Helge Stenström
+ */
+
 package helgestenstrom;
 
 
@@ -21,9 +25,11 @@ public class Menu implements Startable {
 
     private void printChoices() {
         banner();
-        System.out.println("1:      D1U1A, Ten deposits ");
+        System.out.println("1:      D1U1A, Ten deposits  ");
         System.out.println("2:      D1U1B, Ask questions ");
-        System.out.println("0 or q: quit");
+        System.out.println("3:      D1U1C, Print a grid  ");
+        System.out.println("4:      D1U1D, Betygstatistik ");
+        System.out.println("0:      quit");
     }
 
     private String getChoice() {
@@ -62,6 +68,14 @@ public class Menu implements Startable {
 
             case 2:
                 subprogram = new D1U1B();
+                break;
+
+            case 3:
+                subprogram = new D1U1C();
+                break;
+
+            case 4:
+                subprogram = new D1U1D();
                 break;
 
             default:
