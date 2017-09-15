@@ -1,6 +1,8 @@
 package helgestenstrom;
 
+import java.math.BigDecimal;
+
 public class Transaction {
-    String date;
-    Double amount;
+    private String date;
+    private BigDecimal amount;
 }
