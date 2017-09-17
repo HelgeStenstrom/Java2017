@@ -6,7 +6,7 @@ import java.text.DecimalFormatSymbols;
 import java.text.ParseException;
 import java.util.Scanner;
 
-class Account {
+public class Account {
     private String accountNumber;
     private Person owner;
 
@@ -18,7 +18,7 @@ class Account {
 
     private Scanner input = new Scanner(System.in);
 
-    Account() {
+    public Account() {
         accountNumber = "(undefined)";
         owner = Person.nullPerson();
         balance = new BigDecimal(0.0);
