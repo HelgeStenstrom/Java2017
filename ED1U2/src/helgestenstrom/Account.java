@@ -6,6 +6,8 @@ import java.text.DecimalFormatSymbols;
 import java.text.ParseException;
 import java.util.Scanner;
 
+// TODO: Byt ut BigDecimal mot Double. Jag behöver inte BigDecimal för att lösa uppgiften, tror jag.
+
 public class Account {
     private String accountNumber;
     private Person owner;
@@ -81,5 +83,9 @@ public class Account {
         owner.printInfo();
         System.out.printf("Saldo:       %.2f \n", balance);
         System.out.println();
+    }
+
+    public void deposit(BigDecimal amount) {
+        // balance += amount;
     }
 }

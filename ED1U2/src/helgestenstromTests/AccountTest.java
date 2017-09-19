@@ -12,6 +12,8 @@ import helgestenstrom.Menu;
 
 import org.junit.*;
 
+import java.math.BigDecimal;
+
 import static org.junit.Assert.*;
 
 public class AccountTest {
@@ -28,7 +30,7 @@ public class AccountTest {
 
     @Test
     public void getBalance() throws Exception {
-        a.deposit(17);
+        a.deposit((BigDecimal) 17.0);
         assertEquals(177, a.getBalance());
     }
 
