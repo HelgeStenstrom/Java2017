@@ -29,18 +29,15 @@ public class AccountTest {
     }
 
     @Test
-    public void getBalance() throws Exception {
-        a.deposit((BigDecimal) 17.0);
-        assertEquals(177, a.getBalance());
+    public void deposit_increases_balance() throws Exception {
+        a.deposit( 17.0);
+        assertEquals(17.0, a.getBalance(), 0.001);
     }
 
     @Test
-    public void enterInfo() throws Exception {
-    }
-
-    @Test
-    public void printInfo() throws Exception {
-        assertEquals(1,2);
+    public void withdrawal_decreases_balance() throws Exception {
+        a.withdraw( 17.0);
+        assertEquals(-17.0, a.getBalance(), 0.001);
     }
 
 }

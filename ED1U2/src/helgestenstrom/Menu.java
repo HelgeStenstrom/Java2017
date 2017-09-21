@@ -1,7 +1,5 @@
 package helgestenstrom;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import java.util.Scanner;
 
 public class Menu implements Startable {
@@ -43,7 +41,7 @@ public class Menu implements Startable {
         System.out.print("Ditt val: ");
         int choice = Integer.parseInt(input.nextLine());
 
-        System.out.println();;
+        System.out.println();
 
         return choice;
     }
@@ -71,15 +69,14 @@ public class Menu implements Startable {
 
     private void enterAccountInfo() {
         account.enterInfo();
-
     }
 
     private void makeDeposit() {
-        throw new NotImplementedException();
+        account.makeDeposit();
     }
 
-    private void makeWithdrawal() {
-        throw new NotImplementedException();
+    private void makeWithdrawal(){
+        account.makeWithdrawal();
     }
 
     private void seeAccountInfo() {

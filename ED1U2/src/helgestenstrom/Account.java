@@ -1,29 +1,24 @@
 package helgestenstrom;
 
-import java.math.BigDecimal;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.ParseException;
 import java.util.Scanner;
 
-// TODO: Byt ut BigDecimal mot Double. Jag behöver inte BigDecimal för att lösa uppgiften, tror jag.
 
 public class Account {
     private String accountNumber;
     private Person owner;
 
-    public BigDecimal getBalance() {
+    public double getBalance() {
         return balance;
     }
 
-    private BigDecimal balance;
+    private double balance;
 
     private Scanner input = new Scanner(System.in);
 
     public Account() {
         accountNumber = "(undefined)";
         owner = Person.nullPerson();
-        balance = new BigDecimal(0.0);
+        balance = 0;
     }
 
 
@@ -46,46 +41,55 @@ public class Account {
         return input.nextLine();
     }
 
-    private BigDecimal askBalance() {
-        return askBigDecimal("Ange ingående balans: ");
+    private double askBalance() {
+        return askFloat("Ange ingående balans: ");
     }
 
-    private BigDecimal askBigDecimal(String prompt) {
-        BigDecimal answer;
+    private double askFloat(String prompt) {
+        double answer;
         System.out.print(prompt);
-        // BigDecimal answer = input.nextBigDecimal();
         String str = input.nextLine();
-
-        // Code from https://stackoverflow.com/questions/18231802/how-can-i-parse-a-string-to-bigdecimal
-        // Create a DecimalFormat that fits your requirements
-        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
-        //symbols.setGroupingSeparator('');
-        symbols.setDecimalSeparator(',');
-        String pattern = "#,##0.0#";
-        DecimalFormat decimalFormat = new DecimalFormat(pattern, symbols);
-        decimalFormat.setParseBigDecimal(true);
-
         // parse the string
         try {
-            answer = (BigDecimal) decimalFormat.parse(str);
-        } catch (ParseException e) {
+            answer = (double) Float.parseFloat(str);
+        } catch (Exception e) {
             e.printStackTrace();
-            answer = new BigDecimal(-999999);
+            answer = -999999;
         }
-
-
         input.reset();
         return answer;
     }
 
-    public void printInfo() {
+    void printInfo() {
         System.out.printf("Kontonummer: %s \n", accountNumber);
         owner.printInfo();
         System.out.printf("Saldo:       %.2f \n", balance);
         System.out.println();
     }
 
-    public void deposit(BigDecimal amount) {
-        // balance += amount;
+    public void deposit(double amount) {
+        balance += amount;
+    }
+
+    public void withdraw(double amount) {
+        balance -= amount;
+    }
+
+    void makeDeposit() {
+        System.out.println("Sätt in pengar! ");
+        double amount = askAmount();
+        deposit(amount);
+    }
+
+    void makeWithdrawal() {
+        System.out.println("Ta ut pengar! ");
+        double amount = askAmount();
+        withdraw(amount);
+    }
+
+    private double askAmount() {
+        System.out.printf("Belopp: ");
+        String answer = input.nextLine();
+        return (double) Float.parseFloat(answer);
     }
 }
