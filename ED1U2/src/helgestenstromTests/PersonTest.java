@@ -5,6 +5,7 @@
 package helgestenstromTests;
 
 import helgestenstrom.Person;
+//import helgestenstrom.Person.*;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -12,8 +13,9 @@ import static org.junit.Assert.*;
 public class PersonTest {
     @Test
     public void getCity() throws Exception {
-        Person p = new Person();
-        assertEquals("Nisse", p.getFullName());
+        Person x = new Person();
+        Person p = Person.getOwner();
+        assertEquals("Nomen Nescio", p.getFullName());
     }
 
     @Test

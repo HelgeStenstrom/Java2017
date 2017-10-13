@@ -17,7 +17,8 @@ public class Account {
 
     public Account() {
         accountNumber = "(undefined)";
-        owner = Person.nullPerson();
+        // owner = Person.nullPerson();
+        owner = Person.makePersonDialog();
         balance = 0;
     }
 
@@ -25,7 +26,8 @@ public class Account {
     void enterInfo() {
         while (true) {
             accountNumber = askAccountNumber();
-            owner = Person.getOwner();
+            //owner = Person.getOwner();
+            // owner = Person.makePersonDialog();
             balance = askBalance();
             System.out.println();
             System.out.print("Är du nöjd? (j/n) ");

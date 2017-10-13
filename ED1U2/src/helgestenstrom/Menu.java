@@ -26,9 +26,11 @@ public class Menu implements Startable {
     }
 
     private void runMenu() {
+        int choice;
         while (true) {
             printChoices();
-            int choice = getChoice();
+            //choice = getChoice();
+            choice = getIntWithPompt("Ditt val: ");
             if (choice == 0) {
                 break;
             }
@@ -37,13 +39,19 @@ public class Menu implements Startable {
         }
     }
 
-    private int getChoice() {
-        System.out.print("Ditt val: ");
-        int choice = Integer.parseInt(input.nextLine());
-
-        System.out.println();
-
-        return choice;
+    private int getIntWithPompt(String prompt) {
+        int result = 0;
+        boolean done = false;
+        while (!done) {
+            System.out.printf("%s: ", prompt);
+            try {
+                    result = Integer.parseInt(input.nextLine());
+                    done = true;
+            }
+            catch (NumberFormatException e) {
+            }
+        }
+        return result;
     }
 
     private void runChoice(int choice) {
