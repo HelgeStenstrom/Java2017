@@ -4,8 +4,6 @@
 
 package helgestenstrom;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import java.util.Scanner;
 
 public class Person {
@@ -20,7 +18,7 @@ public class Person {
     private String mainPhoneNumber;
     private static Scanner input = new Scanner(System.in);
 
-    static Person nullPerson() {
+    private static Person nullPerson() {
         Person p = new Person();
         p.fullName = "Nomen Nescio";
         p.streetAddress = "Gatan 17";
@@ -31,7 +29,6 @@ public class Person {
         return p;
     }
     public static Person getOwner() {
-        //return this;
         return nullPerson();
     }
 
@@ -43,18 +40,30 @@ public class Person {
         System.out.printf("Telefon      %s \n", mainPhoneNumber);
     }
 
-    public static Person makePersonDialog() {
-        Person p = new Person();
-        System.out.println("Ange kontoägare");
-        p.fullName = promptFor("För- och efternamn");
-        p.streetAddress = promptFor("Gatuadress");
-        p.postalCode = promptFor("Postnummer");
-        p.city = promptFor("Postort");
-        p.mainPhoneNumber = promptFor("Telefonnummer");
-        return p;
+
+    void enterInfo() {
+        while (true) {
+            System.out.println();
+            System.out.println("Ange kontoägare");
+
+            fullName = promptFor("För- och efternamn");
+            streetAddress = promptFor("Gatuadress");
+            postalCode = promptFor("Postnummer");
+            city = promptFor("Postort");
+            mainPhoneNumber = promptFor("Telefonnummer");
+
+            System.out.println();
+            System.out.print("Är du nöjd? (j/n) ");
+            String answer = input.nextLine();
+
+            if (answer.equals("j"))
+                break;
+            System.out.println("Försök igen" );
+        }
     }
 
-    static String promptFor(String prompt) {
+
+    private static String promptFor(String prompt) {
         System.out.printf("%s: ", prompt);
         return input.nextLine();
     }

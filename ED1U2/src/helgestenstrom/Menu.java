@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2017. Helge Stenström
+ */
+
 package helgestenstrom;
 
 import java.util.Scanner;
@@ -49,6 +53,7 @@ public class Menu implements Startable {
                     done = true;
             }
             catch (NumberFormatException e) {
+                // Not catching the exception is probably not very good structure, but it works.
             }
         }
         return result;

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2017. Helge Stenström
+ */
+
 package helgestenstrom;
 
 import java.util.Scanner;
@@ -17,17 +21,15 @@ public class Account {
 
     public Account() {
         accountNumber = "(undefined)";
-        // owner = Person.nullPerson();
-        owner = Person.makePersonDialog();
+        owner = new Person();
         balance = 0;
     }
 
 
     void enterInfo() {
+        owner.enterInfo();
         while (true) {
             accountNumber = askAccountNumber();
-            //owner = Person.getOwner();
-            // owner = Person.makePersonDialog();
             balance = askBalance();
             System.out.println();
             System.out.print("Är du nöjd? (j/n) ");
