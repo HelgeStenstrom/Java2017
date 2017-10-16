@@ -4,10 +4,11 @@
 
 package helgestenstrom;
 
-public class Main {
+public class BankMain {
 
     public static void main(String[] args) {
-        Startable menu = new Menu();
-        menu.start();
+        Profit.test();
+        Startable bankMenu = new BankMenu();
+        bankMenu.start();
     }
 }

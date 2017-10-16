@@ -6,7 +6,7 @@ package helgestenstrom;
 
 import java.util.Scanner;
 
-public class Menu implements Startable {
+public class BankMenu implements Startable {
 
     // SubTask[] tasks; // Hold list of tasks to choose
     private Scanner input;
