@@ -4,13 +4,18 @@
 
 package helgestenstrom;
 
-public class Profit {
+public class Profit implements Startable  {
 
-    static void test() {
+    // @Override
+    public void start() {
+        test();
+    }
+
+    private static void test() {
         PrintValueExamples(10000.0);
     }
 
-    static void PrintValueExamples(double startVal) {
+    private static void PrintValueExamples(double startVal) {
         System.out.printf("Värden av ett konto med olika räntesatser. Ingående balans är %.2f kr. \n",
                             startVal);
         for (double interest = 0.02; interest <= 0.09; interest += 0.01) {
@@ -18,7 +23,7 @@ public class Profit {
         }
     }
 
-    static double CalcValue(double startValue, double interest) {
+    private static double CalcValue(double startValue, double interest) {
         return startValue * (1 + interest);
     }
 

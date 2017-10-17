@@ -4,11 +4,12 @@
 
 package helgestenstrom;
 
-public class BankMain {
+
+public class Main {
 
     public static void main(String[] args) {
-        Profit.test();
-        Startable bankMenu = new BankMenu();
-        bankMenu.start();
+        Startable mainMenu = new MainMenu();
+        mainMenu.start();
     }
+
 }
