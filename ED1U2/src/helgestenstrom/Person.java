@@ -16,7 +16,7 @@ public class Person {
     private String postalCode;
     private String city;
     private String mainPhoneNumber;
-    private static Scanner input = new Scanner(System.in);
+    private static final Scanner input = new Scanner(System.in);
 
     private static Person nullPerson() {
         Person p = new Person();

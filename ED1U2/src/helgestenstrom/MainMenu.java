@@ -76,7 +76,7 @@ public class MainMenu implements Startable {
                 break;
 
             case 3:
-                subprogram = new Profit();
+                subprogram = new Transporter();
                 break;
 
             case 4:

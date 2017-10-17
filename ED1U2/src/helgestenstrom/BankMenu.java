@@ -8,7 +8,6 @@ import java.util.Scanner;
 
 public class BankMenu implements Startable {
 
-    // SubTask[] tasks; // Hold list of tasks to choose
     private Scanner input;
     private Account account;
 
@@ -33,8 +32,7 @@ public class BankMenu implements Startable {
         int choice;
         while (true) {
             printChoices();
-            //choice = getChoice();
-            choice = getIntWithPompt("Ditt val: ");
+            choice = getIntWithPompt();
             if (choice == 0) {
                 break;
             }
@@ -43,17 +41,17 @@ public class BankMenu implements Startable {
         }
     }
 
-    private int getIntWithPompt(String prompt) {
+    private int getIntWithPompt() {
         int result = 0;
         boolean done = false;
         while (!done) {
-            System.out.printf("%s: ", prompt);
+            System.out.printf("%s: ", "Ditt val: ");
             try {
                     result = Integer.parseInt(input.nextLine());
                     done = true;
             }
             catch (NumberFormatException e) {
-                // Not catching the exception is probably not very good structure, but it works.
+                // No need to do anything, except re-trying.
             }
         }
         return result;
@@ -62,16 +60,16 @@ public class BankMenu implements Startable {
     private void runChoice(int choice) {
         switch (choice) {
             case 1:
-                enterAccountInfo();
+                account.enterInfo();
                 break;
             case 2:
-                makeDeposit();
+                account.makeDeposit();
                 break;
             case 3:
-                makeWithdrawal();
+                account.makeWithdrawal();
                 break;
             case 4:
-                seeAccountInfo();
+                account.printInfo();
                 break;
             default: {
                 System.out.println("Ogiltigt val, försök igen!");
@@ -79,21 +77,4 @@ public class BankMenu implements Startable {
             }
         }
     }
-
-    private void enterAccountInfo() {
-        account.enterInfo();
-    }
-
-    private void makeDeposit() {
-        account.makeDeposit();
-    }
-
-    private void makeWithdrawal(){
-        account.makeWithdrawal();
-    }
-
-    private void seeAccountInfo() {
-        account.printInfo();
-    }
-
 }

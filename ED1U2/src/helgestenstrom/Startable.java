@@ -4,6 +4,6 @@
 
 package helgestenstrom;
 
-public interface Startable {
+interface Startable {
     void start();
 }

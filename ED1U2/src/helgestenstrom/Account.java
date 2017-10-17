@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Account {
     private String accountNumber;
-    private Person owner;
+    private final Person owner;
 
     public double getBalance() {
         return balance;
@@ -17,7 +17,7 @@ public class Account {
 
     private double balance;
 
-    private Scanner input = new Scanner(System.in);
+    private final Scanner input = new Scanner(System.in);
 
     public Account() {
         accountNumber = "(undefined)";
