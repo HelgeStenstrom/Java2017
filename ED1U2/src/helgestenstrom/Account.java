@@ -8,16 +8,17 @@ import java.util.Scanner;
 
 
 public class Account {
+    // Banken kan ha flera Account. Varje Account har en ägare (Person)
+    // När en nyu Bank() skapas, försöker jag ha pseudo-rimliga värden, som sedan fylls med vettiga värden.
+
     private String accountNumber;
     private final Person owner;
+    private final Scanner input = new Scanner(System.in);
 
+    private double balance;
     public double getBalance() {
         return balance;
     }
-
-    private double balance;
-
-    private final Scanner input = new Scanner(System.in);
 
     public Account() {
         accountNumber = "(undefined)";
@@ -27,7 +28,7 @@ public class Account {
 
 
     void enterInfo() {
-        owner.enterInfo();
+        owner.enterAccountInfo();
         while (true) {
             accountNumber = askAccountNumber();
             balance = askBalance();
@@ -50,6 +51,9 @@ public class Account {
     }
 
     private double askFloat(String prompt) {
+        // En funktion som potentiellt är användbar i flera sammanhang där ett flyttal efterfrågas.
+        // Dock har jag inte återanvänt funktionen. Det beror mycket på att den inte ligger
+        // åtkomlig för andra klasser.
         double answer;
         System.out.print(prompt);
         String str = input.nextLine();

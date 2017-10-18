@@ -29,8 +29,8 @@ public class MainMenu implements Startable {
         banner();
         System.out.println("1:      D1U2A, Bank account  ");
         System.out.println("2:      D1U2B, Interest and Profit ");
-        System.out.println("3:      D1U2C, ???  ");
-        System.out.println("4:      D1U2D, ??? ");
+        System.out.println("3:      D1U2C, Transporting bank notes  ");
+        System.out.println("4:      D1U2D, Bonus ");
         System.out.println("0:      quit");
     }
 
@@ -68,7 +68,7 @@ public class MainMenu implements Startable {
                 break;
 
             case 1:
-                subprogram = new BankMenu();
+                subprogram = new Bank();
                 break;
 
             case 2:
@@ -80,7 +80,7 @@ public class MainMenu implements Startable {
                 break;
 
             case 4:
-                subprogram = new Profit();
+                subprogram = new Bonus();
                 break;
 
             default:

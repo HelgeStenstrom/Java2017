@@ -6,15 +6,22 @@ package helgestenstrom;
 
 import java.util.Scanner;
 
-public class BankMenu implements Startable {
+public class Bank implements Startable {
 
-    private Scanner input;
-    private Account account;
+    private Scanner input = new Scanner(System.in);
+    private Account account = new Account();
 
     public void start() {
-        input = new Scanner(System.in);
-        account = new Account();
-        runMenu();
+        int choice;
+        while (true) {
+            printChoices();
+            choice = getIntWithPrompt("Ditt val: ");
+            if (choice == 0) {
+                break;
+            }
+
+            runChoice(choice);
+        }
     }
 
     private void printChoices() {
@@ -28,24 +35,12 @@ public class BankMenu implements Startable {
         System.out.println();
     }
 
-    private void runMenu() {
-        int choice;
-        while (true) {
-            printChoices();
-            choice = getIntWithPompt();
-            if (choice == 0) {
-                break;
-            }
-
-            runChoice(choice);
-        }
-    }
-
-    private int getIntWithPompt() {
+    private int getIntWithPrompt(String prompt) {
+        // Potentiellt återanvändingsbar funktion för att fråga om ett heltal.
         int result = 0;
         boolean done = false;
         while (!done) {
-            System.out.printf("%s: ", "Ditt val: ");
+            System.out.printf("%s: ", prompt);
             try {
                     result = Integer.parseInt(input.nextLine());
                     done = true;
@@ -58,6 +53,7 @@ public class BankMenu implements Startable {
     }
 
     private void runChoice(int choice) {
+        // Sköter menyn för denna deluppgift.
         switch (choice) {
             case 1:
                 account.enterInfo();

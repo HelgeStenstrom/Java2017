@@ -7,6 +7,9 @@ package helgestenstrom;
 import java.util.Scanner;
 
 public class Person {
+    // En person behövs som ägare till ett Account.
+    // Personen har namn, adress, telefonnummer.
+
     public String getFullName() {
         return fullName;
     }
@@ -41,7 +44,7 @@ public class Person {
     }
 
 
-    void enterInfo() {
+    void enterAccountInfo() {
         while (true) {
             System.out.println();
             System.out.println("Ange kontoägare");

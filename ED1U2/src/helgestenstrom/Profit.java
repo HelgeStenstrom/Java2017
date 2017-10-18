@@ -23,7 +23,7 @@ public class Profit implements Startable  {
         }
     }
 
-    // En metod med två parametrar
+    // En totalVolym med två parametrar
     private static double CalcValue(double startValue, double interest) {
         return startValue * (1 + interest);
     }
