@@ -1,5 +1,6 @@
-package helgestenstrom;
+package helgestenstrom.D1P3A;
 
+import helgestenstrom.D1P3A.Book;
 import org.junit.Test;
 
 import java.util.ArrayList;

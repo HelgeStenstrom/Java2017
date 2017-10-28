@@ -1,4 +1,4 @@
-package helgestenstrom;
+package helgestenstrom.D1P3B;
 
 public class MainProblemB {
     public static void main(String[] args) {
