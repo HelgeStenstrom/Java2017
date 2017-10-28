@@ -63,4 +63,13 @@ public class bookTests {
         // Verify
         assertEquals("aa, bb", Book.commaSep(l));
     }
+
+    @Test
+    public void createBookWithSingelAuthorString() throws Exception {
+        Book b = new Book("name", "isbn", 1.1, "Author");
+    }
+
+
 }
+
+

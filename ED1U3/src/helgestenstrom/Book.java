@@ -1,5 +1,7 @@
 package helgestenstrom;
 
+import sun.jvm.hotspot.ui.treetable.AbstractTreeTableModel;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -9,44 +11,47 @@ public class Book {
     private double price;
     private ArrayList<String> authors;
 
-    public Book(String name, String isbn, double price, ArrayList<String> authors) {
+    Book(String name, String isbn, double price, ArrayList<String> authors) {
         this.name = name;
         this.isbn = isbn;
         this.price = price;
         this.authors = authors;
     }
 
-    public String getName() {
+    Book(String name, String isbn, double price, String author) {
+        ArrayList<String> auth = new ArrayList<String>();
+        auth.add(author);
+         new   Book(name, isbn, price, auth);
+    }
+
+    String getName() {
         return name;
     }
 
-    public String getIsbn() {
+    String getIsbn() {
         return isbn;
     }
 
-    public double getPrice() {
+    double getPrice() {
         return price;
     }
 
-    public ArrayList<String> getAuthors() {
+    ArrayList<String> getAuthors() {
         return authors;
     }
 
 
     @Override
     public String toString() {
-
-
-        String rep = String.format("[name=%s, ISBN=%s, price=%.2f, authors=[%s]]",
+        return String.format("[name=%s, ISBN=%s, price=%.2f, authors=[%s]]",
                 name, isbn, price, authorList());
-        return rep;
     }
 
     private String authorList() {
         return commaSep(authors);
     }
 
-    public static String commaSep(ArrayList<String> lst) {
+    static String commaSep(ArrayList<String> lst) {
         if (lst.isEmpty())
                 return "";
 
