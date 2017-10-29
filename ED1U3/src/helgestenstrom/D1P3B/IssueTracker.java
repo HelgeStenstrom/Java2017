@@ -1,10 +1,13 @@
 package helgestenstrom.D1P3B;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import java.util.ArrayList;
 
 public class IssueTracker {
+
+    public ArrayList<Issue> getIssues() {
+        return issues;
+    }
 
     ArrayList<Issue> issues = new ArrayList<Issue>();
 
@@ -16,19 +19,19 @@ public class IssueTracker {
         System.out.println("5. Exit");
     }
 
-    public void add() {
+    public void add(Issue issue) {
+        issues.add(issue);
+    }
+
+    public void resolve(Issue issue) {
         throw new NotImplementedException();
     }
 
-    public void resolve() {
+    public void getUnsolved() {
         throw new NotImplementedException();
     }
 
-    public void viewUnsolved() {
-        throw new NotImplementedException();
-    }
-
-    public void viewSolved() {
+    public void getSolved() {
         throw new NotImplementedException();
     }
 

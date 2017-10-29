@@ -16,7 +16,7 @@ public class issueTrackerTests {
     }
 
     @Test
-    public void aPassingTest() {
-        // fail();
+    public void addAnIssue() {
+        it.add(new Issue("i1"));
     }
 }
