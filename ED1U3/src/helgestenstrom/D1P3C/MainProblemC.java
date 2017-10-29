@@ -4,5 +4,9 @@
 
 package helgestenstrom.D1P3C;
 
-public class MainProblemB {
+public class MainProblemC {
+
+    public static void main(String[] args) {
+    }
+
 }
