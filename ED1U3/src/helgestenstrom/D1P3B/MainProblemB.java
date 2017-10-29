@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2017. Helge Stenström
+ */
+
 package helgestenstrom.D1P3B;
 
 import java.util.Scanner;
@@ -32,7 +36,6 @@ public class MainProblemB {
             }
         }
         while (cont);
-        System.out.printf("Du valde %d.", val);
     }
 
     private static void printMenu() {

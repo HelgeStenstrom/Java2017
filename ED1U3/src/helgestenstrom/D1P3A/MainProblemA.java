@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2017. Helge Stenström
+ */
+
 package helgestenstrom.D1P3A;
 
 import helgestenstrom.D1P3A.Book;
