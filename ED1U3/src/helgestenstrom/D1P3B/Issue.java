@@ -1,28 +1,28 @@
 package helgestenstrom.D1P3B;
 
 public class Issue {
-    boolean resolved;
+    private boolean resolved;
 
-    public String getText() {
+    String getText() {
         return text;
     }
 
-    String text;
+    private String text;
 
-    public Issue(String text) {
+    Issue(String text) {
         this.text = text;
         resolved = false;
     }
 
-    public void resolve() {
+    void resolve() {
         resolved = true;
     }
 
-    public void unresolve() {
+    void unresolve() {
         resolved = false;
     }
 
-    public boolean isResolved() {
+    boolean isResolved() {
         return resolved;
     }
 
@@ -35,5 +35,4 @@ public class Issue {
             r = "Unresolved";
         return String.format("%s: %s", r, text);
     }
-
 }

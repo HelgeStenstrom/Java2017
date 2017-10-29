@@ -46,5 +46,4 @@ public class IssueTests {
         issue.unresolve();
         assertEquals("Unresolved: text", issue.toString());
     }
-
 }
