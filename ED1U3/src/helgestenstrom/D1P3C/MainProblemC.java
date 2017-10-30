@@ -19,12 +19,13 @@ public class MainProblemC {
         bags.add(medium);
         bags.add(small);
 
-        System.out.printf("Total volume is : %d", totalVolume);
+        System.out.printf("Total volume is : %d\n", totalVolume);
         int remains = totalVolume;
         for (Bag bag: bags) {
             int fit = remains / bag.volume();
-            System.out.printf("Fitting %d bags of %s", fit, bag);
+            System.out.printf("Fitting %d bag(s) of %s. ", fit, bag);
+            remains = remains - fit * bag.volume();
+            System.out.printf("Remaining volume: %d.\n", remains);
         }
     }
-
 }
