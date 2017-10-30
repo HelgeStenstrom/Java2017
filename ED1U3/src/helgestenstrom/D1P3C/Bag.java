@@ -13,7 +13,7 @@ public class Bag {
         this.length = length;
     }
 
-    public double volume() {
+    public int volume() {
         return height * width * length;
     }
 

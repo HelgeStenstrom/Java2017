@@ -22,7 +22,8 @@ public class MainProblemC {
         System.out.printf("Total volume is : %d", totalVolume);
         int remains = totalVolume;
         for (Bag bag: bags) {
-            int fit = remains % bag.volume();
+            int fit = remains / bag.volume();
+            System.out.printf("Fitting %d bags of %s", fit, bag);
         }
     }
 
