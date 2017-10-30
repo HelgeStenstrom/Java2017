@@ -4,14 +4,14 @@
 
 package helgestenstrom.D1P3A;
 
-import helgestenstrom.D1P3A.Book;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MainProblemA {
 
 
+    // Normalt sett skulle man inte hårdkoda böcker och författare på detta sätt.
+    // Men det var enklaste sättet att lösa uppgiften.
 
     public static void main(String[] args) {
         ArrayList<String> vm = new ArrayList<String>();
@@ -22,6 +22,7 @@ public class MainProblemA {
         books.add(new Book("Invandrarna","987654339", 54, new ArrayList<String>(Arrays.asList("Vilhem Moberg"))));
         books.add(new Book("Head First JavaScript Programming", "987xxxxxx", 372,
                 new ArrayList<String>(Arrays.asList("Eric Freeman", "Elisabeth Robson"))));
+        // Arrays.asList kan vara ett enklare sätt att lägga strängar till en anonym ArrayList.
 
 
         double totalPrice = 0;

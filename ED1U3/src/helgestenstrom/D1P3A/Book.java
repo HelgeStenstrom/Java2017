@@ -14,6 +14,7 @@ public class Book {
     private ArrayList<String> authors;
 
     Book(String name, String isbn, double price, ArrayList<String> authors) {
+        // Standard constructor
         this.name = name;
         this.isbn = isbn;
         this.price = price;
@@ -21,11 +22,18 @@ public class Book {
     }
 
     Book(String name, String isbn, double price, String author) {
-            ArrayList<String> auth = new ArrayList<String>();
-            auth.add(author);
-            new   Book(name, isbn, price, auth);
+        // Alternative constructor, simpler if there is only one author.
+        this.name = name;
+        this.isbn = isbn;
+        this.price = price;
+
+        ArrayList<String> auth = new ArrayList<>();
+        auth.add(author);
+        this.authors = auth;
         }
 
+
+    // Getters (they do what their names suggest)
     String getName() {
         return name;
     }
@@ -45,15 +53,18 @@ public class Book {
 
     @Override
     public String toString() {
+        // String representation of the book.
         return String.format("[name=%s, ISBN=%s, price=%.2f, authors=[%s]]",
                 name, isbn, price, authorList());
     }
 
     private String authorList() {
+        // Utility method to get a comma separated list of authors.
         return commaSep(authors);
     }
 
     static String commaSep(ArrayList<String> lst) {
+        // Create a comma separated list as a string, of any ArrayList of strings.
         if (lst.isEmpty())
                 return "";
 
