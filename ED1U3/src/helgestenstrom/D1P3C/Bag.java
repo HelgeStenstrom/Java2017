@@ -7,6 +7,10 @@ package helgestenstrom.D1P3C;
 public class Bag {
     private int height, width, length;
 
+    // Jag har ingen äkta getter-metod i denna klass, för jag tuycker inte att det tillför något.
+    // Istället har jag toString() och volume() som returnerar allt jag är intresserad av.
+    // I någon mening är de getter-metoder, eftersom de inte manipulerar något data; inga sidoeffekter.
+
     public Bag(int height, int width, int length) {
         this.height = height;
         this.width = width;

@@ -21,10 +21,10 @@ public class Book {
     }
 
     Book(String name, String isbn, double price, String author) {
-        ArrayList<String> auth = new ArrayList<String>();
-        auth.add(author);
-         new   Book(name, isbn, price, auth);
-    }
+            ArrayList<String> auth = new ArrayList<String>();
+            auth.add(author);
+            new   Book(name, isbn, price, auth);
+        }
 
     String getName() {
         return name;
