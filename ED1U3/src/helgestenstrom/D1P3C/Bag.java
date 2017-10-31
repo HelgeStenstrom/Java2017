@@ -11,13 +11,13 @@ public class Bag {
     // Istället har jag toString() och volume() som returnerar allt jag är intresserad av.
     // I någon mening är de getter-metoder, eftersom de inte manipulerar något data; inga sidoeffekter.
 
-    public Bag(int height, int width, int length) {
+    Bag(int height, int width, int length) {
         this.height = height;
         this.width = width;
         this.length = length;
     }
 
-    public int volume() {
+    int volume() {
         return height * width * length;
     }
 

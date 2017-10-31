@@ -25,7 +25,7 @@ public class IssueTests {
         // Issue issue = new Issue("text");
         // Verify
         assertEquals("Should be created as unresolved", false, issue.isResolved());
-        assertEquals("Should be created with text 'text'", "text", issue.getText());
+        assertEquals("Should be created with text 'text'", "text", issue.getDescription());
     }
 
     @Test

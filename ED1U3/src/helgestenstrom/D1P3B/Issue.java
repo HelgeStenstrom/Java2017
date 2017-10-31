@@ -5,17 +5,24 @@
 package helgestenstrom.D1P3B;
 
 public class Issue {
+    // Ett ärende i ärendehanteringssystemet.
     private boolean resolved;
+    private String description;
 
-    String getText() {
-        return text;
+    // Constructor med beskrivning som argument. Alla ärenden skapas "unresolved".
+    Issue(String description) {
+        this.description = description;
+        resolved = false;
     }
 
-    private String text;
+    // Getter
+    String getDescription() {
+        return description;
+    }
 
-    Issue(String text) {
-        this.text = text;
-        resolved = false;
+    // Getter
+    boolean isResolved() {
+        return resolved;
     }
 
     void resolve() {
@@ -26,10 +33,7 @@ public class Issue {
         resolved = false;
     }
 
-    boolean isResolved() {
-        return resolved;
-    }
-
+    // Sträng-represenation av ett ärdende.
     @Override
     public String toString() {
         String r;
@@ -37,6 +41,6 @@ public class Issue {
             r = "Resolved";
         else
             r = "Unresolved";
-        return String.format("%s: %s", r, text);
+        return String.format("%s: %s", r, description);
     }
 }

@@ -40,7 +40,8 @@ Huvudprogram:
 
 ## Diskussion
 Lite som en tidigare inlämningsuppgift, så har jag haft svårigheter
-med input. Scanner input.nextLine() gör inte riktigt som jag vill.
+med input. Scanner input.nextLine() gör inte riktigt som jag vill. 
+Men jag lärde mig ett sätt att hantera det.
 
 Uppgiften med pengapåsarna kändes lite oklar. Textbeskrivningen stämde 
 inte överens med videon. I textbeskrivningen nämndes inte någon totalvolym, 

@@ -6,6 +6,8 @@ package helgestenstrom.D1P3B;
 
 import java.util.Scanner;
 
+// Huvudprogram. Skapa en IssueTracker, och sköt interaktionen med användaren.
+
 public class MainProblemB {
     private static IssueTracker issueTracker = new IssueTracker();
     private static Scanner input = new Scanner(System.in);
@@ -38,6 +40,8 @@ public class MainProblemB {
         while (cont);
     }
 
+    // Skriv ut en meny.
+    // Så här i efterhand skulle jag hellre ha en metod som bara returnerar texten.
     private static void printMenu() {
         System.out.println();
         System.out.println("--- MenuChoice --- ");
@@ -51,6 +55,7 @@ public class MainProblemB {
 
     }
 
+    // Fråga användaren om ett menyval, och returnera valet.
     private static int MenuChoice() {
         int choice = -1;
         printMenu();
@@ -71,6 +76,7 @@ public class MainProblemB {
         return choice;
     }
 
+    // MenuChoice 1. Skapa ett ärende.
     private static void CreateIssue() {
         input.nextLine();
         System.out.println("--- Create new Issue");
@@ -80,7 +86,7 @@ public class MainProblemB {
         issueTracker.add(issue);
     }
 
-    // Choice 2
+    // MenuChoice 2. Mark issue as resolved
     private static void markAsResolved() {
         int index = -1;
         System.out.println("Select an issue to resolve:");
@@ -108,11 +114,12 @@ public class MainProblemB {
         viewIssuesByStatus(true);
     }
 
+    // Returnera de ärenden som har den efterfrågade statusen.
     private static void viewIssuesByStatus(boolean resolved) {
         int index = 0;
         for (Issue issue: issueTracker.getIssues()) {
             if (issue.isResolved() == resolved)
-                System.out.printf("[%d]    %s\n", index, issue.getText());
+                System.out.printf("[%d]    %s\n", index, issue.getDescription());
             index++;
         }
 

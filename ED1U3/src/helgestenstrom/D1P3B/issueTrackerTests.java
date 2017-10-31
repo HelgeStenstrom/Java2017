@@ -80,7 +80,7 @@ public class issueTrackerTests {
         // Verify
         assertEquals(2, it.getUnresolved().size());
         assertEquals(1, it.getResolved().size());
-        assertEquals("i2", it.getResolved().get(0).getText());
+        assertEquals("i2", it.getResolved().get(0).getDescription());
 
     }
 

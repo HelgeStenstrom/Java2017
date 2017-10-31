@@ -13,6 +13,7 @@ public class PhoneCall {
         this.callerPhoneNumber = callerPhoneNumber;
     }
 
+    // Simplified constructor with default fields.
     public PhoneCall() {
         this.callerName = "No Name";
         this.callerPhoneNumber = "No number";
