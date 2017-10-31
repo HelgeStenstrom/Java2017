@@ -5,6 +5,6 @@ public class Controller {
         System.out.println("Klickade A");
     }
     public void clickedB() {
-        System.out.println("Klickade A");
+        System.out.println("Klickade B");
     }
 }
