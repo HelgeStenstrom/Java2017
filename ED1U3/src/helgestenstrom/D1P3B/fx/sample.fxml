@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -11,7 +14,7 @@
   ~ Copyright (c) 2017. Helge Stenström
   -->
 
-<GridPane alignment="center" hgap="10" prefHeight="474.0" prefWidth="382.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="helgestenstrom.D1P3B.fx.Controller">
+<GridPane alignment="center" hgap="10" prefHeight="474.0" prefWidth="382.0" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="helgestenstrom.D1P3B.fx.Controller">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>
@@ -21,11 +24,12 @@
    <children>
       <Pane prefHeight="284.0" prefWidth="382.0">
          <children>
-            <Button layoutX="40.0" layoutY="61.0" mnemonicParsing="false" onMouseClicked="#clickedA" text="Create issue" />
+            <Button layoutX="40.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#clickedA" text="Create issue" />
             <Button layoutX="40.0" layoutY="109.0" mnemonicParsing="false" onMouseClicked="#clickedB" text="Mark as resolved" />
-            <TextField fx:id="txtIssue" layoutX="150.0" layoutY="61.0" promptText="Describe the issue" />
+            <TextField fx:id="txtIssue" layoutX="150.0" layoutY="14.0" promptText="Describe the issue" />
             <Button layoutX="48.0" layoutY="160.0" mnemonicParsing="false" onMouseClicked="#clickedC" text="View resolved" />
             <Button layoutX="40.0" layoutY="209.0" mnemonicParsing="false" text="View unresolved" />
+            <ListView fx:id="lstvIssues" layoutX="161.0" layoutY="60.0" prefHeight="200.0" prefWidth="200.0" />
          </children>
       </Pane>
    </children>
