@@ -1,4 +1,4 @@
-package sample;
+package helgestenstrom.D1P3B.fx;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
