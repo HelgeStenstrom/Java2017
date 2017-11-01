@@ -4,10 +4,8 @@ import helgestenstrom.D1P3B.Issue;
 import helgestenstrom.D1P3B.IssueTracker;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 
 import java.util.ArrayList;
 
@@ -22,45 +20,46 @@ public class IssueController {
 
 
 
-    public void createIssue(MouseEvent mouseEvent) {
+    public void createIssue() {
         String desc = txtIssue.getText();
-        System.out.printf("Ärende: %s\n", desc);
         Issue issue = new Issue(desc);
         issueTracker.add(issue);
+        txtIssue.clear();
         updateGui();
     }
 
-    private void updateGui() {
-        for (Issue issue : issueTracker.getIssues()) {
-            // System.out.printf("Issue: %s\n", issue);
-            lstvIssues.refresh();
-            ArrayList<Issue> issues;
-            switch (whatToShow) {
-                case all:
-                    issues = issueTracker.getIssues();
-                    break;
-                case resolved:
-                    issues = issueTracker.getResolved();
-                    break;
-                case unresolved:
-                    issues = issueTracker.getUnresolved();
-                    break;
-                default:
-                    issues = issueTracker.getIssues();
-                    break;
-            }
-            ArrayList<String> issueTxts = new ArrayList<>();
-            for (Issue iss: issues) {
-                issueTxts.add(iss.toString());
-            }
-            ObservableList<String> items = FXCollections.observableArrayList(issueTxts);
-            lstvIssues.setItems(items);
-        }
+    public void enterInIssue() {
+        createIssue();
     }
 
-    public void markResolved(MouseEvent mouseEvent) {
+    private void updateGui() {
+        lstvIssues.refresh();
+        ArrayList<Issue> issues;
+        switch (whatToShow) {
+            case all:
+                issues = issueTracker.getIssues();
+                break;
+            case resolved:
+                issues = issueTracker.getResolved();
+                break;
+            case unresolved:
+                issues = issueTracker.getUnresolved();
+                break;
+            default:
+                issues = issueTracker.getIssues();
+                break;
+        }
+        ArrayList<String> issueTxts = new ArrayList<>();
+        for (Issue iss : issues) {
+            issueTxts.add(iss.toString());
+        }
+        ObservableList<String> items = FXCollections.observableArrayList(issueTxts);
+        lstvIssues.setItems(items);
+
+    }
+
+    public void markResolved() {
         int marked;
-        marked= lstvIssues.getEditingIndex();
         marked = lstvIssues.getSelectionModel().getSelectedIndex();
         Issue toChange;
         ArrayList<Issue> issueList;
@@ -87,18 +86,20 @@ public class IssueController {
         updateGui();
     }
 
-    public void viewResolved(MouseEvent mouseEvent) {
+    public void viewResolved() {
         whatToShow = resolved;
         updateGui();
     }
 
-    public void viewUnresolved(ActionEvent actionEvent) {
+    public void viewUnresolved() {
         whatToShow = unresolved;
         updateGui();
     }
 
-    public void viewAll(ActionEvent actionEvent) {
+    public void viewAll() {
         whatToShow = all;
         updateGui();
     }
+
+
 }
