@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<!--
+  ~ Copyright (c) 2017. Helge Stenström
+  -->
+
+<GridPane alignment="center" hgap="10" prefHeight="474.0" prefWidth="382.0" vgap="10"
+          xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="helgestenstrom.D1P3B.fx.IssueController">
+    <columnConstraints>
+        <ColumnConstraints/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints/>
+    </rowConstraints>
+    <children>
+        <Pane prefHeight="284.0" prefWidth="382.0">
+            <children>
+                <Button layoutX="40.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#createIssue"
+                        text="Create issue"/>
+                <Button layoutX="25.0" layoutY="68.0" mnemonicParsing="false" onMouseClicked="#markResolved"
+                        text="Mark as resolved"/>
+                <TextField fx:id="txtIssue" layoutX="150.0" layoutY="14.0" promptText="Describe the issue"/>
+                <Button layoutX="25.0" layoutY="147.0" mnemonicParsing="false" onMouseClicked="#viewResolved"
+                        text="View resolved"/>
+                <Button layoutX="26.0" layoutY="185.0" mnemonicParsing="false" onAction="#viewUnresolved"
+                        text="View unresolved"/>
+                <Button layoutX="25.0" layoutY="106.0" onAction="#viewAll" text="View all"/>
+                <ListView fx:id="lstvIssues" layoutX="161.0" layoutY="60.0" prefHeight="200.0" prefWidth="200.0"/>
+            </children>
+        </Pane>
+    </children>
+</GridPane>

@@ -10,7 +10,7 @@ public class Issue {
     private String description;
 
     // Constructor med beskrivning som argument. Alla ärenden skapas "unresolved".
-    Issue(String description) {
+    public Issue(String description) {
         this.description = description;
         resolved = false;
     }
@@ -25,7 +25,7 @@ public class Issue {
         return resolved;
     }
 
-    void resolve() {
+    public void resolve() {
         resolved = true;
     }
 
