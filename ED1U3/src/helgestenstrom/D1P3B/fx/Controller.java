@@ -7,4 +7,7 @@ public class Controller {
     public void clickedB() {
         System.out.println("Klickade B");
     }
+    public void clickedC() {
+        System.out.println("Klickade C");
+    }
 }

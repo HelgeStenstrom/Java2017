@@ -21,6 +21,7 @@
          <children>
             <Button layoutX="40.0" layoutY="61.0" mnemonicParsing="false" onMouseClicked="#clickedA" text="Button A" />
             <Button layoutX="40.0" layoutY="109.0" mnemonicParsing="false" onMouseClicked="#clickedB" text="Button B" />
+            <Button layoutX="40.0" layoutY="161.0" mnemonicParsing="false" onMouseClicked="#clickedC" text="Button C" />
          </children>
       </Pane>
    </children>
