@@ -6,10 +6,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-
 import java.util.ArrayList;
-
 import static helgestenstrom.D1P3B.fx.WhatToShow.*;
+
+// Användbart: http://o7planning.org/en/10625/javafx-hbox-vbox-layout-tutorial
+
 
 public class IssueController {
     public TextField txtIssue;
