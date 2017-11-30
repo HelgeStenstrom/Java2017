@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.effect.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
@@ -27,17 +28,23 @@
     <children>
         <Pane GridPane.rowIndex="1">
          <children>
-            <VBox prefHeight="500.0" prefWidth="500.0">
+            <VBox prefHeight="400.0" prefWidth="600.0" spacing="10.0">
                <children>
                   <HBox>
                      <children>
-                            <Button mnemonicParsing="false" onMouseClicked="#createIssue" prefHeight="26.0" prefWidth="120.0" text="Create issue" />
-                            <TextField fx:id="txtIssue" onAction="#enterInIssue" prefHeight="26.0" prefWidth="384.0" promptText="Describe the issue" />
+                            <Button mnemonicParsing="false" onMouseClicked="#createIssue" prefHeight="26.0" prefWidth="120.0" text="Create issue">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin></Button>
+                            <TextField fx:id="txtIssue" onAction="#enterInIssue" prefHeight="26.0" prefWidth="400.0" promptText="Describe the issue" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin></TextField>
                      </children>
                   </HBox>
-                  <HBox prefHeight="172.0" prefWidth="224.0">
+                  <HBox prefHeight="400.0" prefWidth="224.0" spacing="10.0">
                      <children>
-                        <VBox>
+                        <VBox prefWidth="200.0">
                            <children>
                                   <Button mnemonicParsing="false" onMouseClicked="#markResolved" prefWidth="400.0" text="Mark as resolved" />
                                   <Button mnemonicParsing="false" onMouseClicked="#viewResolved" prefWidth="400.0" text="View resolved" />
@@ -45,12 +52,21 @@
                                   <Button onAction="#viewAll" prefWidth="400.0" text="View all" />
                            </children>
                         </VBox>
-                            <ListView fx:id="lstvIssues" prefHeight="200.0" prefWidth="600.0" />
+                            <ListView fx:id="lstvIssues" prefHeight="400.0" prefWidth="400.0" />
                      </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
                   </HBox>
                </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
             </VBox>
          </children>
         </Pane>
     </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
 </GridPane>
