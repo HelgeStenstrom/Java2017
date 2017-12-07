@@ -12,7 +12,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("issueTracker.fxml"));
         primaryStage.setTitle("Issue Tracker");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(new Scene(root)); // Man kan ange width och height, men då får man problem med att de måsta vara lagom.
+                                                // Det görs i Scene(root, 600, 275)
         primaryStage.show();
     }
 
