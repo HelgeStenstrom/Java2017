@@ -60,8 +60,8 @@
             </GridPane>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="12.0">
                <children>
-                  <Button mnemonicParsing="false" text="OK" />
-                  <Button mnemonicParsing="false" text="Cancel" />
+                  <Button fx:id="btnOk" mnemonicParsing="false" onAction="#okAction" text="OK" />
+                  <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#cancelAction" text="Cancel" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
