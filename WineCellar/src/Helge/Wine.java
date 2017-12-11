@@ -7,6 +7,9 @@ public interface Wine {
      * Differentiate between red or white wine (and possibly other variants)
      * @return wine type.
      */
+
+    public Wine clone();
+
     public WineType getWineType();
 
     public CharacterType getCharacterType();

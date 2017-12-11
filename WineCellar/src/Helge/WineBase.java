@@ -1,11 +1,39 @@
 package Helge;
 
-import Helge.Wine;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.Date;
 
 public class WineBase implements Wine {
+    private final WineType wineType;
+    private final String name;
+    private final int vintage;
+    private final CharacterType characterType;
+    private boolean isConsumed;
+
+    public WineBase(WineType red, String name, int vintage, CharacterType druvigt_och_blommigt, boolean isConsumed) {
+        this.wineType = red;
+        this.name = name;
+        this.vintage = vintage;
+        this.characterType = druvigt_och_blommigt;
+        this.isConsumed = isConsumed;
+
+    }
+
+    public WineBase(WineBase other) {
+        // TODO: Förstå varför Copy Constructor inte kan ha Wine som argument.
+        // TODO: Utred ekvivalenta alternativ.
+        this.wineType = other.wineType;
+        this. name = other.name;
+        this.vintage = other.vintage;
+        this.characterType = other.characterType;
+        this.isConsumed = other.isConsumed;
+    }
+
+    public WineBase clone() {
+        return new WineBase(this);
+    }
+
     /**
      * Differentiate between red or white wine (and possibly other variants)
      *
@@ -14,7 +42,7 @@ public class WineBase implements Wine {
     @Override
     public WineType getWineType() {
         // throw new NotImplementedException();
-        return WineType.Red;
+        return this.wineType;
     }
 
     @Override
@@ -29,7 +57,7 @@ public class WineBase implements Wine {
 
     @Override
     public String getName() {
-        throw new NotImplementedException();
+        return this.name;
     }
 
     @Override
@@ -59,16 +87,16 @@ public class WineBase implements Wine {
 
     @Override
     public Boolean isConsumed() {
-        throw new NotImplementedException();
+        return isConsumed;
     }
 
     @Override
     public void consume() {
-        throw new NotImplementedException();
+        isConsumed = true;
     }
 
     @Override
     public void unConsume() {
-        throw new NotImplementedException();
+        isConsumed = false;
     }
 }

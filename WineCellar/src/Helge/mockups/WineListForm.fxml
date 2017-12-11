@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<TitledPane text="Vinkällaren" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <ListView prefHeight="200.0" prefWidth="200.0" />
+            <TableView prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="Namn" />
+                <TableColumn prefWidth="75.0" text="Typ" />
+                  <TableColumn prefWidth="75.0" text="Årgång" />
+                  <TableColumn prefWidth="75.0" text="Karaktär" />
+              </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </content>
+</TitledPane>
