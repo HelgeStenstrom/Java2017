@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Helge.ListController">
    <children>
-      <ListView prefHeight="200.0" prefWidth="200.0" />
       <TableView prefHeight="200.0" prefWidth="200.0">
         <columns>
           <TableColumn prefWidth="75.0" text="Namn" />
@@ -15,12 +15,18 @@
             <TableColumn prefWidth="75.0" text="Karaktär" />
         </columns>
       </TableView>
-      <HBox prefHeight="100.0" prefWidth="200.0">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="12.0">
          <children>
             <Button fx:id="btnAddWine" mnemonicParsing="false" onAction="#addWine" text="Lägg till vin" />
-            <Button mnemonicParsing="false" text="Redigera markerat vin" />
-            <Button mnemonicParsing="false" text="Ta bort markerat vin" />
+            <Button fx:id="btnEdit" mnemonicParsing="false" onAction="#editWine" text="Redigera markerat vin" />
+            <Button fx:id="btnRemove" mnemonicParsing="false" onAction="#removeWine" text="Ta bort markerat vin" />
          </children>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
       </HBox>
    </children>
 </VBox>
