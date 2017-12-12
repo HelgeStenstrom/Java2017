@@ -12,6 +12,13 @@ public class ListController {
     public void addWine(ActionEvent actionEvent) throws IOException {
         System.out.println("Klickade Add");
 
+        WineBase workwine = White.exampleWhite();
+        Entry entry = new Entry(workwine);
+        // makeEntryForm();
+        //EntryController entryController = new EntryController(workwine);
+    }
+
+    private void makeEntryForm() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("mockups/WineEntryForm.fxml"));
 
         Stage stage = new Stage();
