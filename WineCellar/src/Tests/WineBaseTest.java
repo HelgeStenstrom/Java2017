@@ -31,7 +31,6 @@ public class WineBaseTest {
     void copyFromWite() {
         WineBase white = new White("name", 1999, CharacterType.Druvigt_och_blommigt, false);
         Wine another = new WineBase(white);
-        // TODO: Förstå varför jag måste ha WineBase, och det inte duger med Wine.
 
         assertEquals(WineType.White, white.getWineType());
         assertEquals(WineType.White, another.getWineType());

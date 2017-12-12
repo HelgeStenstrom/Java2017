@@ -21,8 +21,6 @@ public class WineBase implements Wine {
     }
 
     public WineBase(WineBase other) {
-        // TODO: Förstå varför Copy Constructor inte kan ha Wine som argument.
-        // TODO: Utred ekvivalenta alternativ.
         this.wineType = other.wineType;
         this. name = other.name;
         this.vintage = other.vintage;
