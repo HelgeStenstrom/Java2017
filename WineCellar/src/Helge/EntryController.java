@@ -1,13 +1,11 @@
 package Helge;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -20,13 +18,15 @@ public class EntryController {
     public ChoiceBox cbxCharacter;
     public Button btnOk;
     public Button btnCancel;
+
     private Wine wine;
-   private Stage stage;
+    private Stage stage;
 
     EntryController(WineBase wine) throws IOException {
         this.wine = new WineBase(wine);
 
         initializeComponent();
+        initializeGui();
     }
 
     private void initializeComponent() throws IOException {
@@ -42,11 +42,31 @@ public class EntryController {
         stage.show();
     }
 
+    private void initializeGui() {
+        cbxType.setItems(FXCollections.observableArrayList( WineType.values()));
+        cbxType.setValue(WineType.Red);
+
+        cbxCharacter.setItems(FXCollections.observableArrayList( CharacterType.values()));
+        cbxCharacter.setValue(CharacterType.Friskt_och_fruktigt);
+    }
+
     public void okAction(ActionEvent actionEvent) {
         System.out.println("Klickade OK");
+
+
     }
 
     public void cancelAction(ActionEvent actionEvent) {
         System.out.println("Klickade Avbryt");
     }
+
+
+    public void setWineFromGui() {
+        wine.setName(txtName.getText());
+        wine.setVintage(Integer.parseInt(txtVintage.getText()));
+        wine.setCharacterType((CharacterType) cbxCharacter.getValue());
+    }
+
 }
+
+
