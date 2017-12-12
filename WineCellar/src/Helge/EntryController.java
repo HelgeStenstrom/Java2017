@@ -30,7 +30,11 @@ public class EntryController {
     }
 
     private void initializeComponent() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("mockups/WineEntryForm.fxml"));
+
+        // https://stackoverflow.com/questions/23132302/invocationtargetexception-when-running-a-javafx-program
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("mockups/WineEntryForm.fxml"));
+        loader.setController(this);
+        Parent root = loader.load();
 
         stage = new Stage();
         stage.setTitle("Regigera nytt vin");

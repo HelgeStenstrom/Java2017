@@ -13,9 +13,9 @@ public class ListController {
         System.out.println("Klickade Add");
 
         WineBase workwine = White.exampleWhite();
-        Entry entry = new Entry(workwine);
+        //Entry entry = new Entry(workwine);
         // makeEntryForm();
-        //EntryController entryController = new EntryController(workwine);
+        EntryController entryController = new EntryController(workwine);
     }
 
     private void makeEntryForm() throws IOException {
