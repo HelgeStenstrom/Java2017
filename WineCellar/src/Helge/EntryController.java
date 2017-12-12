@@ -52,7 +52,7 @@ public class EntryController {
 
     public void okAction(ActionEvent actionEvent) {
         System.out.println("Klickade OK");
-
+        setWineFromGui();
 
     }
 
@@ -65,6 +65,7 @@ public class EntryController {
         wine.setName(txtName.getText());
         wine.setVintage(Integer.parseInt(txtVintage.getText()));
         wine.setCharacterType((CharacterType) cbxCharacter.getValue());
+        wine.setWineType((WineType) cbxType.getValue());
     }
 
 }

@@ -5,10 +5,18 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import java.util.Date;
 
 public class WineBase implements Wine {
-    private final WineType wineType;
-    private final String name;
-    private final int vintage;
-    private final CharacterType characterType;
+    public void setWineType(WineType wineType) {
+        this.wineType = wineType;
+    }
+
+    public void setConsumed(boolean consumed) {
+        isConsumed = consumed;
+    }
+
+    private WineType wineType;
+    private String name;
+    private int vintage;
+    private CharacterType characterType;
     private boolean isConsumed;
 
     public WineBase(WineType red, String name, int vintage, CharacterType druvigt_och_blommigt, boolean isConsumed) {
@@ -45,12 +53,12 @@ public class WineBase implements Wine {
 
     @Override
     public CharacterType getCharacterType() {
-        throw new NotImplementedException();
+        return characterType;
     }
 
     @Override
     public void setCharacterType(CharacterType characterType) {
-        throw new NotImplementedException();
+        this.characterType = characterType;
     }
 
     @Override
@@ -60,17 +68,17 @@ public class WineBase implements Wine {
 
     @Override
     public void setName(String name) {
-        throw new NotImplementedException();
+        this.name = name;
     }
 
     @Override
     public int getVintage() {
-        throw new NotImplementedException();
+        return vintage;
     }
 
     @Override
     public void setVintage(int vintage) {
-        throw new NotImplementedException();
+        this.vintage = vintage;
     }
 
     @Override
