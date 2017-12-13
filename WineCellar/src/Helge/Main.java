@@ -10,7 +10,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        // setupStage(primaryStage);
+        // TODO: Hitta vad som fungerar.
+        //setupStage(primaryStage);
         ListController lc = new ListController(primaryStage);
         //lc.setupStage(primaryStage);
     }

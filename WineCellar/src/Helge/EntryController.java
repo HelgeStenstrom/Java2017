@@ -44,7 +44,6 @@ public class EntryController {
         stage = new Stage();
         stage.setTitle("Regigera nytt vin");
         stage.setScene(new Scene(root));
-        //stage.show();
     }
 
     public void showStage() {

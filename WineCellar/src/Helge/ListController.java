@@ -1,6 +1,5 @@
 package Helge;
 
-import com.sun.tools.javac.util.Name;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +18,9 @@ public class ListController {
     }
 
     public ListController(Stage primaryStage) throws Exception {
-        setupStage(primaryStage);
+        this.primaryStage = primaryStage;
+        setupStage();
+        initTableView();
     }
 
     public TableView getTvWines() {
@@ -54,6 +55,8 @@ public class ListController {
         this.colCharacter = colCharacter;
     }
 
+
+    private Stage primaryStage;
     public Button btnAddWine;
     public Button btnEdit;
     public Button btnRemove;
@@ -73,8 +76,14 @@ public class ListController {
     public TableColumn colCharacter;
     private CellarManager cellarManager = new CellarManager();
 
-    public void setupStage(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("mockups/WineListForm.fxml"));
+    public void setupStage() throws Exception{
+        // https://stackoverflow.com/questions/23132302/invocationtargetexception-when-running-a-javafx-program
+        // Parent root = FXMLLoader.load(getClass().getResource("mockups/WineListForm.fxml"));
+        // TODO: Förstå varför jag får InvocationTargetException
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("mockups/WineListForm.fxml"));
+        loader.setController(this);
+        Parent root = loader.load();  // TODO: förstå InvocationTargetException
+
         primaryStage.setTitle("Vinkällaren");
         primaryStage.setScene(new Scene(root)); //, 300, 275));
         primaryStage.show();
