@@ -27,6 +27,7 @@ public class EntryController {
 
         initializeComponent();
         initializeGui();
+        updateGui();
     }
 
     private void initializeComponent() throws IOException {
