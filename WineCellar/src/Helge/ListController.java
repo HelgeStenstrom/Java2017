@@ -14,6 +14,7 @@ public class ListController {
 
         WineBase workwine = White.exampleWhite();
         EntryController entryController = new EntryController(workwine);
+        System.out.printf("Name: '%s'\n", workwine.getName());
     }
 
     public void editWine(ActionEvent actionEvent) {

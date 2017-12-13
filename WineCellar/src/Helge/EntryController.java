@@ -54,7 +54,7 @@ public class EntryController {
     public void okAction(ActionEvent actionEvent) {
         System.out.println("Klickade OK");
         setWineFromGui();
-
+        stage.close();
     }
 
     public void cancelAction(ActionEvent actionEvent) {
