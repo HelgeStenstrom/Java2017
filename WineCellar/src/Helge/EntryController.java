@@ -40,6 +40,11 @@ public class EntryController {
         stage = new Stage();
         stage.setTitle("Regigera nytt vin");
         stage.setScene(new Scene(root));
+        //stage.show();
+    }
+
+    public void showStage() {
+        // TODO: skriv funktion som stannar i EntryController tills man aktivt lämnar den med stage.close()
         stage.show();
     }
 

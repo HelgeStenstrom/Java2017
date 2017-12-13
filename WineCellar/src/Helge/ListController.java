@@ -14,6 +14,7 @@ public class ListController {
 
         WineBase workwine = White.exampleWhite();
         EntryController entryController = new EntryController(workwine);
+        entryController.showStage(); // TODO: använd funktion som stannar kvar i entryController tills man aktivt lämnar den.
         System.out.printf("Name: '%s'\n", workwine.getName());
     }
 
