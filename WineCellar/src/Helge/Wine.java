@@ -28,4 +28,7 @@ public interface Wine {
     public Boolean isConsumed();
     public void consume();
     public void unConsume();
+
+    public String getNotes();
+    public void setNotes();
 }
