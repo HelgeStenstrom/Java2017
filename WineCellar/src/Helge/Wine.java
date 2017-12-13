@@ -30,5 +30,5 @@ public interface Wine {
     public void unConsume();
 
     public String getNotes();
-    public void setNotes();
+    public void setNotes(String notes);
 }

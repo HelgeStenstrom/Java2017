@@ -18,6 +18,8 @@ public class WineBase implements Wine {
     private int vintage;
     private CharacterType characterType;
     private boolean isConsumed;
+    private String notes;
+    private Date dateAdded;
 
     public WineBase(WineType red, String name, int vintage, CharacterType druvigt_och_blommigt, boolean isConsumed) {
         this.wineType = red;
@@ -47,7 +49,6 @@ public class WineBase implements Wine {
      */
     @Override
     public WineType getWineType() {
-        // throw new NotImplementedException();
         return this.wineType;
     }
 
@@ -83,12 +84,12 @@ public class WineBase implements Wine {
 
     @Override
     public Date getDateAdded() {
-        throw new NotImplementedException();
+        return dateAdded;
     }
 
     @Override
     public void setAdded(Date date) {
-        throw new NotImplementedException();
+        this.dateAdded = date;
     }
 
     @Override
@@ -104,5 +105,15 @@ public class WineBase implements Wine {
     @Override
     public void unConsume() {
         isConsumed = false;
+    }
+
+    @Override
+    public String getNotes() {
+        return notes;
+    }
+
+    @Override
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 }

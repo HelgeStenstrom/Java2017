@@ -3,9 +3,11 @@ package Tests;
 import Helge.*;
 import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -32,7 +34,16 @@ class CellarManagerTest {
 
     @Test
     void getWines() {
-        fail("Test not written");
+        // Setup
+        //Wine w = White.exampleWhite();
+        //Wine r = new WineBase(WineType.Red,"red", 1997, CharacterType.Fylligt_och_smakrikt, false);
+        cm.add(w);
+        cm.add(r);
+
+        // Exercise
+        ArrayList<Wine> wines = cm.getWines();
+        assertSame(w, wines.get(0));
+        assertSame(r, wines.get(1));
     }
 
     @Test
@@ -129,5 +140,42 @@ class CellarManagerTest {
         assertEquals(1, whites.size());
         assertSame(r, reds.get(0));
         assertSame(w, whites.get(0));
+    }
+
+    @Test @Disabled
+    void iterateExpiclity() {
+
+        // Setup
+        cm.add(r);
+        cm.add(w);
+        ArrayList<Wine> wines = new ArrayList<>();
+
+        // Exercise and collec data
+        for (Iterator<Wine> i = cm.iterator(); i.hasNext();) {
+            Wine item = i.next();
+            wines.add(item);
+        }
+
+        // Verify
+        assertSame(r, wines.get(0));
+        assertSame(w, wines.get(1));
+    }
+
+    @Test @Disabled
+    void iterate() {
+
+        // Setup
+        cm.add(r);
+        cm.add(w);
+        ArrayList<Wine> wines = new ArrayList<>();
+
+        // Exercise and collec data
+//        for (Wine wine : cm) {  // The test is on this row.
+//            wines.add(wine);
+//        }
+
+        // Verify
+        assertSame(r, wines.get(0));
+        assertSame(w, wines.get(1));
     }
 }

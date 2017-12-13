@@ -19,6 +19,10 @@ public class EntryController {
     public Button btnOk;
     public Button btnCancel;
 
+    public Wine getWine() {
+        return wine;
+    }
+
     private Wine wine;
     private Stage stage;
 
@@ -45,7 +49,8 @@ public class EntryController {
 
     public void showStage() {
         // TODO: skriv funktion som stannar i EntryController tills man aktivt lämnar den med stage.close()
-        stage.show();
+        stage.showAndWait();
+        setWineFromGui();
     }
 
     private void initializeGui() {
