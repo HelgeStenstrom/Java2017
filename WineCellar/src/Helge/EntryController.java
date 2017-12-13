@@ -68,6 +68,10 @@ public class EntryController {
         wine.setWineType((WineType) cbxType.getValue());
     }
 
+    public void updateGui() {
+        txtName.setText(wine.getName());
+        txtVintage.setText(Integer.toString(wine.getVintage()));
+        cbxCharacter.setValue(wine.getCharacterType());
+        cbxType.setValue(wine.getWineType());
+    }
 }
-
-
