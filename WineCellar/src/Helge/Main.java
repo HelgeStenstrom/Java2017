@@ -10,7 +10,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Object o = getClass();
+        // setupStage(primaryStage);
+        ListController lc = new ListController(primaryStage);
+        //lc.setupStage(primaryStage);
+    }
+
+    private void setupStage(Stage primaryStage) throws java.io.IOException {
         Parent root = FXMLLoader.load(getClass().getResource("mockups/WineListForm.fxml"));
         primaryStage.setTitle("Vinkällaren");
         primaryStage.setScene(new Scene(root)); //, 300, 275));

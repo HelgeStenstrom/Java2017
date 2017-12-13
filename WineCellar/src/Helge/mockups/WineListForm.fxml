@@ -7,12 +7,12 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Helge.ListController">
    <children>
-      <TableView prefHeight="200.0" prefWidth="200.0">
+      <TableView fx:id="tvWines" prefHeight="200.0" prefWidth="200.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Namn" />
-          <TableColumn prefWidth="75.0" text="Typ" />
-            <TableColumn prefWidth="75.0" text="Årgång" />
-            <TableColumn prefWidth="75.0" text="Karaktär" />
+          <TableColumn fx:id="colName" prefWidth="75.0" text="Namn" />
+          <TableColumn fx:id="colType" prefWidth="75.0" text="Typ" />
+            <TableColumn fx:id="colVintage" prefWidth="75.0" text="Årgång" />
+            <TableColumn fx:id="colCharacter" prefWidth="75.0" text="Karaktär" />
         </columns>
       </TableView>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="12.0">

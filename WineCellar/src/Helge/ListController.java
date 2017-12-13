@@ -1,20 +1,85 @@
 package Helge;
 
+import com.sun.tools.javac.util.Name;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class ListController {
+    public ListController() {
+        // initTableView();
+    }
+
+    public ListController(Stage primaryStage) throws Exception {
+        setupStage(primaryStage);
+    }
+
+    public TableView getTvWines() {
+        return tvWines;
+    }
+
+    public void setTvWines(TableView tvWines) {
+        this.tvWines = tvWines;
+    }
+
+    public TableColumn getColType() {
+        return colType;
+    }
+
+    public void setColType(TableColumn colType) {
+        this.colType = colType;
+    }
+
+    public TableColumn getColVintage() {
+        return colVintage;
+    }
+
+    public void setColVintage(TableColumn colVintage) {
+        this.colVintage = colVintage;
+    }
+
+    public TableColumn getColCharacter() {
+        return colCharacter;
+    }
+
+    public void setColCharacter(TableColumn colCharacter) {
+        this.colCharacter = colCharacter;
+    }
 
     public Button btnAddWine;
     public Button btnEdit;
     public Button btnRemove;
+    public TableView tvWines;
+
+    public TableColumn getColName() {
+        return colName;
+    }
+
+    public void setColName(TableColumn colName) {
+        this.colName = colName;
+    }
+
+    public TableColumn colName;
+    public TableColumn colType;
+    public TableColumn colVintage;
+    public TableColumn colCharacter;
     private CellarManager cellarManager = new CellarManager();
+
+    public void setupStage(Stage primaryStage) throws Exception{
+        Parent root = FXMLLoader.load(getClass().getResource("mockups/WineListForm.fxml"));
+        primaryStage.setTitle("Vinkällaren");
+        primaryStage.setScene(new Scene(root)); //, 300, 275));
+        primaryStage.show();
+    }
+
 
     public void addWine(ActionEvent actionEvent) throws IOException {
         System.out.println("Klickade Add");
@@ -28,12 +93,20 @@ public class ListController {
 
         cellarManager.add(returned);
 
-        updateListView();
+        updateTableView();
     }
 
-    private void updateListView() {
+    private void initTableView() {
+        TableColumn tc1 = new TableColumn("Ett");
+        TableColumn tc2 = new TableColumn("Två");
+        ObservableList x = tvWines.getColumns();
+        tvWines.getColumns().addAll(tc1, tc2);
+    }
+
+    private void updateTableView() {
         
         for(Wine wine : cellarManager.getWines() ) {
+            System.out.println(wine.getName());
             
         }
     }
