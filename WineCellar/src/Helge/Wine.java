@@ -1,5 +1,7 @@
 package Helge;
 
+import javafx.beans.value.ObservableValue;
+
 import java.util.Date;
 
 public interface Wine {

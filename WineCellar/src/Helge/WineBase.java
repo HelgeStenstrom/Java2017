@@ -1,7 +1,12 @@
+/*
+ * Copyright (c) 2017. Helge Stenström
+ */
+
 package Helge;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import javafx.beans.value.ObservableValue;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class WineBase implements Wine {
@@ -13,13 +18,13 @@ public class WineBase implements Wine {
         isConsumed = consumed;
     }
 
-    private WineType wineType;
-    private String name;
-    private int vintage;
     private CharacterType characterType;
-    private boolean isConsumed;
-    private String notes;
     private Date dateAdded;
+    private boolean isConsumed;
+    private String name;
+    private String notes;
+    private int vintage;
+    private WineType wineType;
 
     public WineBase(WineType red, String name, int vintage, CharacterType druvigt_och_blommigt, boolean isConsumed) {
         this.wineType = red;
@@ -116,4 +121,17 @@ public class WineBase implements Wine {
     public void setNotes(String notes) {
         this.notes = notes;
     }
+
+    public ArrayList<String> getRowStrings() {
+        ArrayList<String> result = new ArrayList<>();
+        result.add(name);
+        result.add(wineType.toString());
+        result.add(Integer.toString(vintage));
+        result.add(characterType.toString());
+        return result;
+    }
+
+    // TODO: gör klart nästa rad, eller ta bort.
+    // public final ObjectProperty<>
+
 }
