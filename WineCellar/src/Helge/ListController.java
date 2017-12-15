@@ -104,6 +104,9 @@ public class ListController {
         primaryStage.setTitle("Vinkällaren");
         primaryStage.setScene(new Scene(root)); //, 300, 275));
         primaryStage.show();
+        final String os = System.getProperty ("os.name");
+        if (os != null && os.startsWith ("Mac"))
+            mbAppMenu.useSystemMenuBarProperty().set(true);
     }
 
 
