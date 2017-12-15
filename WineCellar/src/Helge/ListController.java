@@ -102,7 +102,7 @@ public class ListController {
         Parent root = loader.load();
 
         primaryStage.setTitle("Vinkällaren");
-        primaryStage.setScene(new Scene(root)); //, 300, 275));
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
         final String os = System.getProperty ("os.name");
         if (os != null && os.startsWith ("Mac"))
@@ -127,13 +127,27 @@ public class ListController {
     }
 
     private void initTableView() {
+        ObservableList winesColumns = tvWines.getColumns();
+        winesColumns.clear();
 
         TableColumn<Wine, String> nameCol = new TableColumn<>("Namn");
         nameCol.setCellValueFactory(celldata -> new ReadOnlyStringWrapper(celldata.getValue().getName()));
 
-        ObservableList winesColumns = tvWines.getColumns();
-        winesColumns.clear();
-        winesColumns.addAll(nameCol);
+        TableColumn<Wine, String> vintageCol = new TableColumn<>("Årgång");
+        vintageCol.setCellValueFactory(celldata -> new ReadOnlyStringWrapper(Integer.toString(celldata.getValue().getVintage())));
+
+        TableColumn<Wine, String> typeCol = new TableColumn<>("Typ");
+        typeCol.setCellValueFactory(celldata -> new ReadOnlyStringWrapper(celldata.getValue().getWineType().toString()));
+
+        TableColumn<Wine, String> charCol = new TableColumn<>("Karaktär");
+        charCol.setCellValueFactory(celldata -> new ReadOnlyStringWrapper(celldata.getValue().getCharacterType().toString()));
+
+        TableColumn<Wine, String> noteCol = new TableColumn<>("Notering");
+        noteCol.setCellValueFactory(celldata -> new ReadOnlyStringWrapper(celldata.getValue().getNotes()));
+
+
+
+        winesColumns.addAll(nameCol, vintageCol, typeCol, charCol, noteCol);
 
         Wine white =  White.exampleWhite();
         tvWines.getItems().add(White.exampleWhite());
@@ -150,9 +164,12 @@ public class ListController {
 
     public void editWine(ActionEvent actionEvent) {
         System.out.println("Klickade Redigera");
+        //tvWines.getItems().
     }
 
     public void removeWine(ActionEvent actionEvent) {
         System.out.println("Klickade Ta bort");
+        System.out.println(tvWines.selectionModelProperty().toString());
+        System.out.printf("Vald rad: %d. \n", tvWines.getSelectionModel().getFocusedIndex());
     }
 }

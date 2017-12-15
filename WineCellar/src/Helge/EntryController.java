@@ -110,6 +110,7 @@ public class EntryController {
         wine.setVintage(Integer.parseInt(txtVintage.getText()));
         wine.setCharacterType((CharacterType) cbxCharacter.getValue());
         wine.setWineType((WineType) cbxType.getValue());
+        wine.setNotes(txtNotes.getText());
     }
 
     /**
@@ -120,5 +121,6 @@ public class EntryController {
         txtVintage.setText(Integer.toString(wine.getVintage()));
         cbxCharacter.setValue(wine.getCharacterType());
         cbxType.setValue(wine.getWineType());
+        txtNotes.setText(wine.getNotes());
     }
 }
