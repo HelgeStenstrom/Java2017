@@ -5,15 +5,13 @@
 package Helge;
 
 import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -27,6 +25,7 @@ public class ListController {
     public Button btnAddWine;
     public Button btnEdit;
     public Button btnRemove;
+    public ListView lvWines; // Ditlagd av IntelliJ när fxml-filen hade denna klass som Controller.
     private CellarManager cellarManager = new CellarManager();
     public TableColumn colCharacter;
     public TableColumn colName;
@@ -35,6 +34,7 @@ public class ListController {
     public MenuBar mbAppMenu;
     private Stage primaryStage;
     public TableView tvWines;
+    // public ListView lvWines; // Ditlagd manuellt; de övriga har IntelliJ skapat.
 
 
     /**
@@ -46,6 +46,7 @@ public class ListController {
         this.primaryStage = primaryStage;
         setupStage();
         initTableView();
+        initListView();
     }
 
     /**
@@ -124,6 +125,15 @@ public class ListController {
         cellarManager.add(returned);
 
         updateTableView();
+        updateListView();
+    }
+
+    private void initMenu() {
+        // TODO: Lägg till undermenyer.
+    }
+
+    private void initListView() {
+
     }
 
     private void initTableView() {
@@ -132,18 +142,24 @@ public class ListController {
 
         TableColumn<Wine, String> nameCol = new TableColumn<>("Namn");
         nameCol.setCellValueFactory(celldata -> new ReadOnlyStringWrapper(celldata.getValue().getName()));
+        nameCol.setSortable(false);
 
-        TableColumn<Wine, String> vintageCol = new TableColumn<>("Årgång");
-        vintageCol.setCellValueFactory(celldata -> new ReadOnlyStringWrapper(Integer.toString(celldata.getValue().getVintage())));
+        TableColumn<Wine, Integer> vintageCol = new TableColumn<>("# Årgång");
+        vintageCol.setCellValueFactory(celldata -> new SimpleIntegerProperty( celldata.getValue().getVintage()).asObject());
+        vintageCol.setSortable(false);
 
         TableColumn<Wine, String> typeCol = new TableColumn<>("Typ");
         typeCol.setCellValueFactory(celldata -> new ReadOnlyStringWrapper(celldata.getValue().getWineType().toString()));
+        typeCol.setSortable(false);
 
         TableColumn<Wine, String> charCol = new TableColumn<>("Karaktär");
         charCol.setCellValueFactory(celldata -> new ReadOnlyStringWrapper(celldata.getValue().getCharacterType().toString()));
+        charCol.setSortable(false);
 
         TableColumn<Wine, String> noteCol = new TableColumn<>("Notering");
         noteCol.setCellValueFactory(celldata -> new ReadOnlyStringWrapper(celldata.getValue().getNotes()));
+        noteCol.setSortable(false);
+
 
 
 
@@ -151,6 +167,13 @@ public class ListController {
 
         Wine white =  White.exampleWhite();
         tvWines.getItems().add(White.exampleWhite());
+    }
+
+    private void updateListView() {
+        lvWines.getItems().clear();
+        for(Wine wine : cellarManager.getWines()) {
+            lvWines.getItems().add(wine.getName());
+        }
     }
 
     private void updateTableView() {

@@ -9,31 +9,26 @@
    <children>
       <MenuBar fx:id="mbAppMenu">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu mnemonicParsing="false" text="Fil">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem mnemonicParsing="false" text="Stäng" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu mnemonicParsing="false" text="Redigera">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+                  <MenuItem mnemonicParsing="false" text="Redigera vald" />
+              <MenuItem mnemonicParsing="false" text="Ta bort vald" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu mnemonicParsing="false" text="Hjälp">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" text="Om" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
-      <TableView fx:id="tvWines" prefHeight="200.0" prefWidth="200.0">
-        <columns>
-          <TableColumn fx:id="colName" prefWidth="75.0" text="Namn" />
-          <TableColumn fx:id="colType" prefWidth="75.0" text="Typ" />
-            <TableColumn fx:id="colVintage" prefWidth="75.0" text="Årgång" />
-            <TableColumn fx:id="colCharacter" prefWidth="75.0" text="Karaktär" />
-        </columns>
-      </TableView>
+      <ListView fx:id="lvWines" prefHeight="200.0" prefWidth="200.0" />
+      <TableView fx:id="tvWines" prefHeight="200.0" prefWidth="200.0" />
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="12.0">
          <children>
             <Button fx:id="btnAddWine" mnemonicParsing="false" onAction="#addWine" text="Lägg till vin" />
