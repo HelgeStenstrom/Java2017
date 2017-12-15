@@ -5,7 +5,6 @@
 package Helge;
 
 import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -15,11 +14,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 
-import javax.swing.event.TableModelListener;
 import java.io.IOException;
 
 
@@ -101,11 +97,9 @@ public class ListController {
 
     public void setupStage() throws Exception{
         // https://stackoverflow.com/questions/23132302/invocationtargetexception-when-running-a-javafx-program
-        // Parent root = FXMLLoader.load(getClass().getResource("mockups/WineListForm.fxml"));
-        // TODO: Förstå varför jag får InvocationTargetException
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mockups/WineListForm.fxml"));
         loader.setController(this);
-        Parent root = loader.load();  // TODO: förstå InvocationTargetException
+        Parent root = loader.load();
 
         primaryStage.setTitle("Vinkällaren");
         primaryStage.setScene(new Scene(root)); //, 300, 275));
@@ -130,24 +124,14 @@ public class ListController {
     }
 
     private void initTableView() {
-        TableColumn newName = new TableColumn("Namn(ny)");
-        TableColumn newCharacter = new TableColumn("Karaktär(ny)");
-        TableColumn<Wine, String> charCol = new TableColumn<>("Karaktär");
 
-        TableColumn<Wine, String> nameCol = new TableColumn<>("Namn 3");
+        TableColumn<Wine, String> nameCol = new TableColumn<>("Namn");
         nameCol.setCellValueFactory(celldata -> new ReadOnlyStringWrapper(celldata.getValue().getName()));
 
-        // charCol.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getEthic().getStyle()));
-        // charCol.setCellValueFactory(o -> o.getValue().toString());
-        // charCol.setCellValueFactory(o -> o.getValue().getCharacterType().toString());
+        ObservableList winesColumns = tvWines.getColumns();
+        winesColumns.clear();
+        winesColumns.addAll(nameCol);
 
-        //newName.setCellValueFactory(o -> new ReadOnlyStringWrapper(o.getValue()));
-        //ObservableList<Wine> wines = new O
-
-        ObservableList x = tvWines.getColumns();
-        x.clear();
-        tvWines.getColumns().addAll(nameCol);
-        //tvWines.getItems().add(new String[] {"test of adding a row"});
         Wine white =  White.exampleWhite();
         tvWines.getItems().add(White.exampleWhite());
     }
@@ -157,8 +141,6 @@ public class ListController {
         tvWines.getItems().clear();
         for(Wine wine : cellarManager.getWines() ) {
             System.out.printf("Vin från cellarManager: %s\n", wine.getName());
-            // TODO: lägg till vin i listan
-            // tvWines.getItems().add(new String[] {"hej", "hopp", "tre", "fyra"});
             tvWines.getItems().add(wine);
         }
     }
