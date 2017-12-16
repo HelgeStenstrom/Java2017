@@ -18,7 +18,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 
-
+/**
+ * The ListController handles events from GUI objects of the main window, the wine list form.
+ */
 public class ListController {
 
     // Fields
@@ -26,16 +28,14 @@ public class ListController {
     public Button btnAddWine;
     public Button btnEdit;
     public Button btnRemove;
-    public ListView lvWines; // Ditlagd av IntelliJ när fxml-filen hade denna klass som Controller.
     private CellarManager cellarManager = new CellarManager();
     public TableColumn colCharacter;
-    public TableColumn colName;
+    private TableColumn colName;
     public TableColumn colType;
     public TableColumn colVintage;
     public MenuBar mbAppMenu;
     private Stage primaryStage;
     public TableView tvWines;
-    // public ListView lvWines; // Ditlagd manuellt; de övriga har IntelliJ skapat.
 
 
     /**
@@ -47,57 +47,16 @@ public class ListController {
         this.primaryStage = primaryStage;
         setupStage();
         initTableView();
-        initListView();
         initMenu();
     }
 
+
+
+
     /**
-     * @return the tableview for wines.
+     * Initialize the graphical components of the Wine list GUI
+     * @throws Exception
      */
-    public TableView getTvWines() {
-        return tvWines;
-    }
-
-    public void setTvWines(TableView tvWines) {
-        this.tvWines = tvWines;
-    }
-
-    public TableColumn getColType() {
-        return colType;
-    }
-
-    public void setColType(TableColumn colType) {
-        this.colType = colType;
-    }
-
-    public TableColumn getColVintage() {
-        return colVintage;
-    }
-
-    public void setColVintage(TableColumn colVintage) {
-        this.colVintage = colVintage;
-    }
-
-    public TableColumn getColCharacter() {
-        return colCharacter;
-    }
-
-    public void setColCharacter(TableColumn colCharacter) {
-        this.colCharacter = colCharacter;
-    }
-
-
-
-    public TableColumn getColName() {
-        return colName;
-    }
-
-    public void setColName(TableColumn colName) {
-        this.colName = colName;
-    }
-
-
-
     public void setupStage() throws Exception{
         // https://stackoverflow.com/questions/23132302/invocationtargetexception-when-running-a-javafx-program
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mockups/WineListForm.fxml"));
@@ -113,6 +72,9 @@ public class ListController {
     }
 
 
+    /**
+     * Initialize the application menu.
+     */
     private void initMenu() {
 
         // mbAppMenu är redan skapad via fxml-filen. Tyvärr ser inte IntelliJ vad den har för innehåll
@@ -140,10 +102,11 @@ public class ListController {
 
     }
 
-    private void initListView() {
 
-    }
 
+    /**
+     * Initialize the table view used for wines, by defining columns for it.
+     */
     private void initTableView() {
         ObservableList winesColumns = tvWines.getColumns();
         winesColumns.clear();
@@ -168,22 +131,16 @@ public class ListController {
         noteCol.setCellValueFactory(celldata -> new ReadOnlyStringWrapper(celldata.getValue().getNotes()));
         noteCol.setSortable(false);
 
-
-
-
         winesColumns.addAll(nameCol, vintageCol, typeCol, charCol, noteCol);
 
         WineBase white =  White.exampleWhite();
         tvWines.getItems().add(White.exampleWhite());
     }
 
-    private void updateListView() {
-        lvWines.getItems().clear();
-        for(WineBase wine : cellarManager.getWines()) {
-            lvWines.getItems().add(wine.getName());
-        }
-    }
 
+    /**
+     * Update the table view for wines with data from the cellar manager.
+     */
     private void updateTableView() {
 
         tvWines.getItems().clear();
@@ -193,21 +150,24 @@ public class ListController {
         }
     }
 
+    /**
+     * Add a wine to the cellar manager, by calling the wine entry form.
+     * Triggered by clicking "Lägg till vin" button
+     * @param actionEvent
+     * @throws IOException
+     */
     public void addWine(ActionEvent actionEvent) throws IOException {
         // TODO: Förstå varför IntelliJ inte tycker att metoden används.
 
         WineBase workwine = White.exampleWhite();
         EntryController entryController = new EntryController(workwine);
-        entryController.showStage(); // TODO: använd funktion som stannar kvar i entryController tills man aktivt lämnar den.
+        entryController.showStage();
         WineBase returned = entryController.getWine();
-
-        // System.out.printf("Name: '%s'\n", returned.getName());
 
         if (entryController.isKeepWine())
             cellarManager.add(returned);
 
         updateTableView();
-        updateListView();
     }
 
     /**
@@ -215,7 +175,7 @@ public class ListController {
      * @param actionEvent
      */
     public void editWine(ActionEvent actionEvent) throws IOException {
-        System.out.println("Klickade Redigera");
+        //System.out.println("Klickade Redigera");
         //tvWines.getItems().
         // TODO: implementera editWine
         // TODO: Se till att Cancel fungerar i EntryForm
@@ -227,15 +187,11 @@ public class ListController {
             entryController.showStage(); // TODO: använd funktion som stannar kvar i entryController tills man aktivt lämnar den.
             WineBase returned = entryController.getWine();
 
-            // System.out.printf("Name: '%s'\n", returned.getName());
-
             if (entryController.isKeepWine()) {
                 cellarManager.replace(selected, returned);
             }
 
             updateTableView();
-            updateListView();
-
         }
 
     }
@@ -250,7 +206,6 @@ public class ListController {
             cellarManager.remove(selected);
 
         updateTableView();
-        updateListView();
     }
 
 

@@ -94,3 +94,8 @@ understruktur, och jag får ingen hjälp med att skriva koden.
 En workaround är att bygga upp menyer och TablView i koden, i en
 MenuBar respektive TableView som jag skapat i Scene Builder. Det känns
 inte optimalt.
+
+Det finns lite funktionalitet i underliggande klasserna WineBase och CellarManager som 
+inte har någon motsvarighet i GUI, nämligen att sätta vinet som drucket eller odrucket, 
+och att lista viner efter urval. Jag ser det som överkurs som inte motsvaras av några krav.
+Att funktionerna fungerar, testar jag med unit-tests. 
