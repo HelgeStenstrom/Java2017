@@ -8,6 +8,7 @@ import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -47,6 +48,7 @@ public class ListController {
         setupStage();
         initTableView();
         initListView();
+        initMenu();
     }
 
     /**
@@ -113,23 +115,47 @@ public class ListController {
 
     public void addWine(ActionEvent actionEvent) throws IOException {
         // TODO: Förstå varför IntelliJ inte tycker att metoden används.
-        System.out.println("Klickade Add");
 
+        // TODO: Se till att Cancel fungerar i EntryForm
         WineBase workwine = White.exampleWhite();
         EntryController entryController = new EntryController(workwine);
         entryController.showStage(); // TODO: använd funktion som stannar kvar i entryController tills man aktivt lämnar den.
         Wine returned = entryController.getWine();
 
-        System.out.printf("Name: '%s'\n", returned.getName());
+        // System.out.printf("Name: '%s'\n", returned.getName());
 
-        cellarManager.add(returned);
+        if (entryController.isKeepWine())
+            cellarManager.add(returned);
 
         updateTableView();
         updateListView();
     }
 
     private void initMenu() {
-        // TODO: Lägg till undermenyer.
+
+        // mbAppMenu är redan skapad via fxml-filen. Tyvärr ser inte IntelliJ vad den har för innehåll
+        // så jag skapar innehållet här.
+
+        Menu menuFile = new Menu("Fil");
+        MenuItem itemQuit = new MenuItem("Avsluta");
+        itemQuit.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent t) {
+                System.exit(0);
+            }
+        });
+
+        menuFile.getItems().addAll(itemQuit);
+
+        Menu menuHelp = new Menu("Hjälp");
+        MenuItem itemAbout = new MenuItem("Om");
+        menuHelp.getItems().addAll(itemAbout);
+
+        itemAbout.setOnAction(this::showAboutBox);
+
+        mbAppMenu.getMenus().clear();
+        mbAppMenu.getMenus().addAll(menuFile, menuHelp);
+
+
     }
 
     private void initListView() {
@@ -180,7 +206,7 @@ public class ListController {
 
         tvWines.getItems().clear();
         for(Wine wine : cellarManager.getWines() ) {
-            System.out.printf("Vin från cellarManager: %s\n", wine.getName());
+            // System.out.printf("Vin från cellarManager: %s\n", wine.getName());
             tvWines.getItems().add(wine);
         }
     }
@@ -188,11 +214,48 @@ public class ListController {
     public void editWine(ActionEvent actionEvent) {
         System.out.println("Klickade Redigera");
         //tvWines.getItems().
+        // TODO: implementera editWine
+        // TODO: Se till att Cancel fungerar i EntryForm
     }
 
     public void removeWine(ActionEvent actionEvent) {
         System.out.println("Klickade Ta bort");
         System.out.println(tvWines.selectionModelProperty().toString());
         System.out.printf("Vald rad: %d. \n", tvWines.getSelectionModel().getFocusedIndex());
+        // TODO: imlementera removeWine
+        updateTableView();
+        updateListView();
+    }
+
+
+    /**
+     * Callback used to show an About box. Used when the Hjälp button is clicked,
+     * or when Om is selected from the HJälp menu.
+     * @param actionEvent
+     */
+    public void showAboutBox(ActionEvent actionEvent) {
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Om det här programmet...");
+        alert.setHeaderText("Projektuppgift i Java, HKR 2017");
+
+        String txt = "";
+        txt += "Programmet hanterar en lista över viner. Vinerna har namn, årgång, type (rött eller vitt), ";
+        txt += "smakkaraktär och eventuellt anteckningar om vinet.";
+        txt += "\n";
+        txt += "Klicka 'Lägg till vin', så öppmas ett formulär för att lägga till viner.";
+        txt += "";
+        txt += "";
+        txt += "";
+
+        txt += "\n";
+        txt += "(c) 2017 Helge Stenström \n";
+
+        alert.setContentText(txt);
+        alert.showAndWait().ifPresent(rs -> {
+            if (rs == ButtonType.OK) {
+                System.out.println("Pressed OK.");
+            }
+        });
     }
 }

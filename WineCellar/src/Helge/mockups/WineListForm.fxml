@@ -34,6 +34,7 @@
             <Button fx:id="btnAddWine" mnemonicParsing="false" onAction="#addWine" text="Lägg till vin" />
             <Button fx:id="btnEdit" mnemonicParsing="false" onAction="#editWine" text="Redigera markerat vin" />
             <Button fx:id="btnRemove" mnemonicParsing="false" onAction="#removeWine" text="Ta bort markerat vin" />
+            <Button fx:id="btnHelp" mnemonicParsing="false" onAction="#showAboutBox" text="Hjälp" />
          </children>
          <VBox.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

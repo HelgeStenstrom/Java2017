@@ -7,7 +7,7 @@ public class White extends WineBase {
     }
 
     public static White exampleWhite() {
-        return new White("name", 1999, CharacterType.Druvigt_och_blommigt, false);
+        return new White("Exempelvin", 1999, CharacterType.Druvigt_och_blommigt, false);
     }
 
     /**

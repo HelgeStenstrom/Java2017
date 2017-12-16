@@ -24,6 +24,7 @@ public class EntryController {
     public TextArea txtNotes;
     public TextField txtVintage;
     private Wine wine;
+    private boolean keepWine = true;
 
 
     /**
@@ -37,6 +38,14 @@ public class EntryController {
         initializeComponent();
         initializeGui();
         updateGui();
+    }
+
+    /**
+     * Used to determine if the user clicked Ok or Cancel
+     * @return
+     */
+    public boolean isKeepWine() {
+        return keepWine;
     }
 
     /**
@@ -90,6 +99,7 @@ public class EntryController {
     public void okAction(ActionEvent actionEvent) {
         System.out.println("Klickade OK");
         setWineFromGui();
+        keepWine = true;
         stage.close();
     }
 
@@ -99,6 +109,10 @@ public class EntryController {
      */
     public void cancelAction(ActionEvent actionEvent) {
         System.out.println("Klickade Avbryt");
+        // TODO: Se till att Cancel avslutar formuläret utan att ändra vinet. Som om inget hänt.
+        keepWine = false;
+        stage.close();
+
     }
 
 
