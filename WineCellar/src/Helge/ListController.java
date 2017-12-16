@@ -113,24 +113,6 @@ public class ListController {
     }
 
 
-    public void addWine(ActionEvent actionEvent) throws IOException {
-        // TODO: Förstå varför IntelliJ inte tycker att metoden används.
-
-        // TODO: Se till att Cancel fungerar i EntryForm
-        WineBase workwine = White.exampleWhite();
-        EntryController entryController = new EntryController(workwine);
-        entryController.showStage(); // TODO: använd funktion som stannar kvar i entryController tills man aktivt lämnar den.
-        Wine returned = entryController.getWine();
-
-        // System.out.printf("Name: '%s'\n", returned.getName());
-
-        if (entryController.isKeepWine())
-            cellarManager.add(returned);
-
-        updateTableView();
-        updateListView();
-    }
-
     private void initMenu() {
 
         // mbAppMenu är redan skapad via fxml-filen. Tyvärr ser inte IntelliJ vad den har för innehåll
@@ -211,18 +193,56 @@ public class ListController {
         }
     }
 
+    private void enterWine(WineBase workwine) throws IOException {
+        EntryController entryController = new EntryController(workwine);
+        entryController.showStage(); // TODO: använd funktion som stannar kvar i entryController tills man aktivt lämnar den.
+        Wine returned = entryController.getWine();
+
+        // System.out.printf("Name: '%s'\n", returned.getName());
+
+        if (entryController.isKeepWine())
+            cellarManager.add(returned);
+
+        updateTableView();
+        updateListView();
+    }
+
+    public void addWine(ActionEvent actionEvent) throws IOException {
+        // TODO: Förstå varför IntelliJ inte tycker att metoden används.
+
+        WineBase workwine = White.exampleWhite();
+        enterWine(workwine);
+    }
+
+    /**
+     * Edit the selected wine. The Entry form is brought up with the selected wine pre-filled.
+     * @param actionEvent
+     */
     public void editWine(ActionEvent actionEvent) {
         System.out.println("Klickade Redigera");
         //tvWines.getItems().
         // TODO: implementera editWine
         // TODO: Se till att Cancel fungerar i EntryForm
+
+        int selected = tvWines.getSelectionModel().getSelectedIndex();
+        if (selected >= 0) {
+            Wine workwine = cellarManager.get(selected);
+            //enterWine(workwine);
+            // TODO: Utred var jag ska använda Wine respektve WineBase.
+
+        }
+
     }
 
+    /**
+     * Remove the selected wine from the wine manager.
+     * @param actionEvent
+     */
     public void removeWine(ActionEvent actionEvent) {
-        System.out.println("Klickade Ta bort");
-        System.out.println(tvWines.selectionModelProperty().toString());
-        System.out.printf("Vald rad: %d. \n", tvWines.getSelectionModel().getFocusedIndex());
-        // TODO: imlementera removeWine
+        int selected = tvWines.getSelectionModel().getSelectedIndex();
+        if (selected >= 0)
+            cellarManager.remove(selected);
+
         updateTableView();
         updateListView();
     }
