@@ -15,8 +15,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class EntryController {
-    public Button btnCancel;
-    public Button btnOk;
+    private Button btnCancel;
+    private Button btnOk;
     public ChoiceBox cbxCharacter;
     public ChoiceBox cbxType;
     private Stage stage;
@@ -97,7 +97,6 @@ public class EntryController {
      * @param actionEvent
      */
     public void okAction(ActionEvent actionEvent) {
-        System.out.println("Klickade OK");
         setWineFromGui();
         keepWine = true;
         stage.close();
@@ -108,8 +107,6 @@ public class EntryController {
      * @param actionEvent
      */
     public void cancelAction(ActionEvent actionEvent) {
-        System.out.println("Klickade Avbryt");
-        // TODO: Se till att Cancel avslutar formuläret utan att ändra vinet. Som om inget hänt.
         keepWine = false;
         stage.close();
 

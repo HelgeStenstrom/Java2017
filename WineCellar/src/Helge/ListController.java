@@ -25,17 +25,17 @@ public class ListController {
 
     // Fields
 
-    public Button btnAddWine;
-    public Button btnEdit;
-    public Button btnRemove;
+    private Button btnAddWine;
+    private Button btnEdit;
+    private Button btnRemove;
     private CellarManager cellarManager = new CellarManager();
-    public TableColumn colCharacter;
+    private TableColumn colCharacter;
     private TableColumn colName;
-    public TableColumn colType;
-    public TableColumn colVintage;
-    public MenuBar mbAppMenu;
+    private TableColumn colType;
+    private TableColumn colVintage;
+    public MenuBar mbAppMenu;   // TODO: förstå varför mbAppMenu måste vara public
     private Stage primaryStage;
-    public TableView tvWines;
+    public TableView tvWines;   // TODO: förstå varför tvWines måste vara public
 
 
     /**
@@ -49,9 +49,6 @@ public class ListController {
         initTableView();
         initMenu();
     }
-
-
-
 
     /**
      * Initialize the graphical components of the Wine list GUI
@@ -102,8 +99,6 @@ public class ListController {
 
     }
 
-
-
     /**
      * Initialize the table view used for wines, by defining columns for it.
      */
@@ -136,7 +131,6 @@ public class ListController {
         WineBase white =  White.exampleWhite();
         tvWines.getItems().add(White.exampleWhite());
     }
-
 
     /**
      * Update the table view for wines with data from the cellar manager.
@@ -175,11 +169,6 @@ public class ListController {
      * @param actionEvent
      */
     public void editWine(ActionEvent actionEvent) throws IOException {
-        //System.out.println("Klickade Redigera");
-        //tvWines.getItems().
-        // TODO: implementera editWine
-        // TODO: Se till att Cancel fungerar i EntryForm
-
         int selected = tvWines.getSelectionModel().getSelectedIndex();
         if (selected >= 0) {
             WineBase workwine = cellarManager.get(selected);
@@ -207,7 +196,6 @@ public class ListController {
 
         updateTableView();
     }
-
 
     /**
      * Callback used to show an About box. Used when the Hjälp button is clicked,

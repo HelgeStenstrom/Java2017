@@ -2,10 +2,22 @@ package Helge;
 
 public class White extends WineBase {
 
-    public White(String name, int vintage, CharacterType druvigt_och_blommigt, boolean isConsumed) {
-        super(WineType.White, name, vintage, druvigt_och_blommigt, isConsumed);
+    /**
+     * Subclass of WineBase, behaves like the same, but with the wineType White.
+     * A future improvement would be to have different character types available for White and Red.
+     * @param name
+     * @param vintage
+     * @param characterType
+     * @param isConsumed
+     */
+    public White(String name, int vintage, CharacterType characterType, boolean isConsumed) {
+        super(WineType.White, name, vintage, characterType, isConsumed);
     }
 
+    /**
+     * Generate an example wine to be used for development, and to initially fill in the form.
+     * @return
+     */
     public static White exampleWhite() {
         return new White("Exempelvin", 1999, CharacterType.Druvigt_och_blommigt, false);
     }
