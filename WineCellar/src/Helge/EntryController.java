@@ -23,7 +23,7 @@ public class EntryController {
     public TextField txtName;
     public TextArea txtNotes;
     public TextField txtVintage;
-    private Wine wine;
+    private WineBase wine;
     private boolean keepWine = true;
 
 
@@ -51,7 +51,7 @@ public class EntryController {
     /**
      * @return the wine that is represented by the form contents
      */
-    public Wine getWine() {
+    public WineBase getWine() {
         setWineFromGui();
         return wine;
     }

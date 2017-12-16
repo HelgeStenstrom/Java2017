@@ -3,13 +3,14 @@
 ## Krav och lösningar
 
 ### Programmet ska ha en meny
-TODO
+Det finns en mycket enkel meny (MenuBar), med två kommandon: Fil->Avsluta, och Hjälp->Om.
+Om ger samma hjälptext som man når med Hjälp-knappen.
 
 ### Programmet ska ha en hjälpfunktion
-TODO
-
 Programmet måste ha en hjälpfunktion som kan nås när programmet
 körs (via en meny eller på annat vis).
+Man kan nå hjälpfunktionen på två sätt: Med menyvalet Hjälp -> Om, eller genom att klicka 
+på hjälp-knappen.
 
 ### Programmet ska bestå av minst fyra klasser
 Programmet består för närvarande av klasserna CellarManager,

@@ -9,7 +9,7 @@ public class WineBaseTest {
 
     @Test
     void construct() {
-        Wine red = new WineBase(WineType.Red,
+        WineBase red = new WineBase(WineType.Red,
                 "namn",
                 2007,
                 CharacterType.Druvigt_och_blommigt,
@@ -24,13 +24,13 @@ public class WineBaseTest {
                 CharacterType.Druvigt_och_blommigt,
                 false);
 
-        Wine another = new WineBase(red);
+        WineBase another = new WineBase(red);
     }
 
     @Test
     void copyFromWite() {
         WineBase white = new White("name", 1999, CharacterType.Druvigt_och_blommigt, false);
-        Wine another = new WineBase(white);
+        WineBase another = new WineBase(white);
 
         assertEquals(WineType.White, white.getWineType());
         assertEquals(WineType.White, another.getWineType());

@@ -148,23 +148,23 @@ public class ListController {
         ObservableList winesColumns = tvWines.getColumns();
         winesColumns.clear();
 
-        TableColumn<Wine, String> nameCol = new TableColumn<>("Namn");
+        TableColumn<WineBase, String> nameCol = new TableColumn<>("Namn");
         nameCol.setCellValueFactory(celldata -> new ReadOnlyStringWrapper(celldata.getValue().getName()));
         nameCol.setSortable(false);
 
-        TableColumn<Wine, Integer> vintageCol = new TableColumn<>("# Årgång");
+        TableColumn<WineBase, Integer> vintageCol = new TableColumn<>("# Årgång");
         vintageCol.setCellValueFactory(celldata -> new SimpleIntegerProperty( celldata.getValue().getVintage()).asObject());
         vintageCol.setSortable(false);
 
-        TableColumn<Wine, String> typeCol = new TableColumn<>("Typ");
+        TableColumn<WineBase, String> typeCol = new TableColumn<>("Typ");
         typeCol.setCellValueFactory(celldata -> new ReadOnlyStringWrapper(celldata.getValue().getWineType().toString()));
         typeCol.setSortable(false);
 
-        TableColumn<Wine, String> charCol = new TableColumn<>("Karaktär");
+        TableColumn<WineBase, String> charCol = new TableColumn<>("Karaktär");
         charCol.setCellValueFactory(celldata -> new ReadOnlyStringWrapper(celldata.getValue().getCharacterType().toString()));
         charCol.setSortable(false);
 
-        TableColumn<Wine, String> noteCol = new TableColumn<>("Notering");
+        TableColumn<WineBase, String> noteCol = new TableColumn<>("Notering");
         noteCol.setCellValueFactory(celldata -> new ReadOnlyStringWrapper(celldata.getValue().getNotes()));
         noteCol.setSortable(false);
 
@@ -173,13 +173,13 @@ public class ListController {
 
         winesColumns.addAll(nameCol, vintageCol, typeCol, charCol, noteCol);
 
-        Wine white =  White.exampleWhite();
+        WineBase white =  White.exampleWhite();
         tvWines.getItems().add(White.exampleWhite());
     }
 
     private void updateListView() {
         lvWines.getItems().clear();
-        for(Wine wine : cellarManager.getWines()) {
+        for(WineBase wine : cellarManager.getWines()) {
             lvWines.getItems().add(wine.getName());
         }
     }
@@ -187,16 +187,19 @@ public class ListController {
     private void updateTableView() {
 
         tvWines.getItems().clear();
-        for(Wine wine : cellarManager.getWines() ) {
+        for(WineBase wine : cellarManager.getWines() ) {
             // System.out.printf("Vin från cellarManager: %s\n", wine.getName());
             tvWines.getItems().add(wine);
         }
     }
 
-    private void enterWine(WineBase workwine) throws IOException {
+    public void addWine(ActionEvent actionEvent) throws IOException {
+        // TODO: Förstå varför IntelliJ inte tycker att metoden används.
+
+        WineBase workwine = White.exampleWhite();
         EntryController entryController = new EntryController(workwine);
         entryController.showStage(); // TODO: använd funktion som stannar kvar i entryController tills man aktivt lämnar den.
-        Wine returned = entryController.getWine();
+        WineBase returned = entryController.getWine();
 
         // System.out.printf("Name: '%s'\n", returned.getName());
 
@@ -207,18 +210,11 @@ public class ListController {
         updateListView();
     }
 
-    public void addWine(ActionEvent actionEvent) throws IOException {
-        // TODO: Förstå varför IntelliJ inte tycker att metoden används.
-
-        WineBase workwine = White.exampleWhite();
-        enterWine(workwine);
-    }
-
     /**
      * Edit the selected wine. The Entry form is brought up with the selected wine pre-filled.
      * @param actionEvent
      */
-    public void editWine(ActionEvent actionEvent) {
+    public void editWine(ActionEvent actionEvent) throws IOException {
         System.out.println("Klickade Redigera");
         //tvWines.getItems().
         // TODO: implementera editWine
@@ -226,9 +222,19 @@ public class ListController {
 
         int selected = tvWines.getSelectionModel().getSelectedIndex();
         if (selected >= 0) {
-            Wine workwine = cellarManager.get(selected);
-            //enterWine(workwine);
-            // TODO: Utred var jag ska använda Wine respektve WineBase.
+            WineBase workwine = cellarManager.get(selected);
+            EntryController entryController = new EntryController(workwine);
+            entryController.showStage(); // TODO: använd funktion som stannar kvar i entryController tills man aktivt lämnar den.
+            WineBase returned = entryController.getWine();
+
+            // System.out.printf("Name: '%s'\n", returned.getName());
+
+            if (entryController.isKeepWine()) {
+                cellarManager.replace(selected, returned);
+            }
+
+            updateTableView();
+            updateListView();
 
         }
 

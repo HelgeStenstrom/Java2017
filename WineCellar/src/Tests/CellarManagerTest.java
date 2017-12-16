@@ -15,8 +15,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class CellarManagerTest {
 
     CellarManager cm;
-    Wine w;
-    Wine r;
+    WineBase w;
+    WineBase r;
 
     @BeforeEach
     void setUp() {
@@ -41,7 +41,7 @@ class CellarManagerTest {
         cm.add(r);
 
         // Exercise
-        ArrayList<Wine> wines = cm.getWines();
+        ArrayList<WineBase> wines = cm.getWines();
         assertSame(w, wines.get(0));
         assertSame(r, wines.get(1));
     }
@@ -61,7 +61,7 @@ class CellarManagerTest {
         // Setup
         cm.add(w);
         cm.add(r);
-        Wine w1 = cm.get(0);
+        WineBase w1 = cm.get(0);
         assertEquals("white", w1.getName());
         assertEquals("red", cm.get(1).getName());
     }
@@ -89,7 +89,7 @@ class CellarManagerTest {
         cm.consume(1);
 
         // Exercise
-        ArrayList<Wine> remains = cm.getUnConsumed();
+        ArrayList<WineBase> remains = cm.getUnConsumed();
 
         // Verify
         assertEquals(1, remains.size());
@@ -105,7 +105,7 @@ class CellarManagerTest {
         cm.consume(1);
 
         // Exercise
-        ArrayList<Wine> remains = cm.getConsumed();
+        ArrayList<WineBase> remains = cm.getConsumed();
 
         // Verify
         assertEquals(1, remains.size());
@@ -115,8 +115,8 @@ class CellarManagerTest {
     @Test
     void remove() {
         // Setup
-        Wine w = new White("white", 1999, CharacterType.Druvigt_och_blommigt, false);
-        Wine r = new WineBase(WineType.Red, "red", 1999, CharacterType.Druvigt_och_blommigt, false);
+        WineBase w = new White("white", 1999, CharacterType.Druvigt_och_blommigt, false);
+        WineBase r = new WineBase(WineType.Red, "red", 1999, CharacterType.Druvigt_och_blommigt, false);
         // Exercise
         cm.add(w);
         cm.add(r);
@@ -132,8 +132,8 @@ class CellarManagerTest {
         cm.add(w);
 
         // Exercise
-        ArrayList<Wine> whites = cm.getWinesOfType(WineType.White);
-        ArrayList<Wine> reds = cm.getWinesOfType(WineType.Red);
+        ArrayList<WineBase> whites = cm.getWinesOfType(WineType.White);
+        ArrayList<WineBase> reds = cm.getWinesOfType(WineType.Red);
 
         // Verify
         assertEquals(1, reds.size());
@@ -142,17 +142,31 @@ class CellarManagerTest {
         assertSame(w, whites.get(0));
     }
 
+    @Test
+    void replace() {
+        // Setup
+        cm.add(r);
+        cm.add(w);
+        WineBase w2 = White.exampleWhite();
+
+        // Exercise
+        cm.replace(1, w2);
+
+        // Verify
+        assertSame(cm.get(1), w2);
+    }
+
     @Test @Disabled
     void iterateExpiclity() {
 
         // Setup
         cm.add(r);
         cm.add(w);
-        ArrayList<Wine> wines = new ArrayList<>();
+        ArrayList<WineBase> wines = new ArrayList<>();
 
         // Exercise and collec data
-        for (Iterator<Wine> i = cm.iterator(); i.hasNext();) {
-            Wine item = i.next();
+        for (Iterator<WineBase> i = cm.iterator(); i.hasNext();) {
+            WineBase item = i.next();
             wines.add(item);
         }
 
@@ -167,7 +181,7 @@ class CellarManagerTest {
         // Setup
         cm.add(r);
         cm.add(w);
-        ArrayList<Wine> wines = new ArrayList<>();
+        ArrayList<WineBase> wines = new ArrayList<>();
 
         // Exercise and collec data
 //        for (Wine wine : cm) {  // The test is on this row.
