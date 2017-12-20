@@ -1,7 +1,6 @@
 package Tests;
 
 import Helge.*;
-import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -14,16 +13,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CellarManagerTest {
 
-    CellarManager cm;
-    WineBase w;
-    WineBase r;
+    private CellarManager cm = new CellarManager();
+    private WineBase w;
+    private WineBase r;
 
     @BeforeEach
     void setUp() {
-        cm = new CellarManager();
         w = new White("white", 1999, CharacterType.Druvigt_och_blommigt, false);
         r = new WineBase(WineType.Red, "red", 1999, CharacterType.Druvigt_och_blommigt, false);
-
     }
 
     @Test
