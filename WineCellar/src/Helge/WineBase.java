@@ -44,10 +44,11 @@ public class WineBase implements Wine {
      */
     public WineBase(WineBase other) {
         this.wineType = other.wineType;
-        this. name = other.name;
+        this.name = other.name;
         this.vintage = other.vintage;
         this.characterType = other.characterType;
         this.isConsumed = other.isConsumed;
+        this.notes = other.notes;
     }
 
     /**
