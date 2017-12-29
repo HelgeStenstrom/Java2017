@@ -2,13 +2,13 @@
  * Copyright (c) 2017. Helge Stenström
  */
 
-package Helge;
+package Helge
 
 /**
  * The main types of wine are Red and White.
  * Future improvement: add Rose.
  */
-public enum WineType {
+enum class WineType {
     Red,
     White
 }

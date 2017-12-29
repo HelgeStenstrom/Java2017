@@ -144,7 +144,7 @@ class CellarManagerTest {
         // Setup
         cm.add(r);
         cm.add(w);
-        WineBase w2 = White.exampleWhite();
+        WineBase w2 = White.Companion.exampleWhite();
 
         // Exercise
         cm.replace(1, w2);
