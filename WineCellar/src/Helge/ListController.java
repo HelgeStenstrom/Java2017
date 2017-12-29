@@ -128,8 +128,8 @@ public class ListController {
 
         winesColumns.addAll(nameCol, vintageCol, typeCol, charCol, noteCol);
 
-        WineBase white =  White.Companion.exampleWhite();
-        tvWines.getItems().add(White.Companion.exampleWhite());
+        WineBase white =  White.exampleWhite();
+        tvWines.getItems().add(White.exampleWhite());
     }
 
     /**
@@ -153,7 +153,7 @@ public class ListController {
     public void addWine(ActionEvent actionEvent) throws IOException {
         // TODO: Förstå varför IntelliJ inte tycker att metoden används.
 
-        WineBase workwine = White.Companion.exampleWhite();
+        WineBase workwine = White.exampleWhite();
         EntryController entryController = new EntryController(workwine);
         entryController.showStage();
         WineBase returned = entryController.getWine();

@@ -1,9 +1,9 @@
-package Helge
+package Helge;
 
 /**
  * Systembolaget divides wines into character types. These are the types.
  */
-enum class CharacterType {
+public enum CharacterType {
 
     // Red
     Fruktigt_och_smakrikt,
