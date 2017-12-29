@@ -23,24 +23,24 @@ public class WineBase implements Wine {
 
     /**
      * Standard constructor.
-     * @param red
-     * @param name
-     * @param vintage
-     * @param druvigt_och_blommigt
-     * @param isConsumed
+     * @param type Type of the wine
+     * @param name The name of the wine
+     * @param vintage The year the wine was is grown.
+     * @param characterType The character type according to Systembolaget
+     * @param isConsumed True if the wine is consumed (no longer available to drink)
      */
-    public WineBase(WineType red, String name, int vintage, CharacterType druvigt_och_blommigt, boolean isConsumed) {
-        this.wineType = red;
+    public WineBase(WineType type, String name, int vintage, CharacterType characterType, boolean isConsumed) {
+        this.wineType = type;
         this.name = name;
         this.vintage = vintage;
-        this.characterType = druvigt_och_blommigt;
+        this.characterType = characterType;
         this.isConsumed = isConsumed;
 
     }
 
     /**
      * Copy constructor
-     * @param other
+     * @param other The wine to copy
      */
     public WineBase(WineBase other) {
         this.wineType = other.wineType;
@@ -53,8 +53,9 @@ public class WineBase implements Wine {
 
     /**
      * Return a copy of itself, by calling the copy constructor.
-     * @return
+     * @return a copy of itself
      */
+    @Override
     public WineBase clone() {
         return new WineBase(this);
     }
@@ -71,7 +72,7 @@ public class WineBase implements Wine {
 
     /**
      * Set the type of the wine (red or white)
-     * @param wineType
+     * @param wineType The type of the wine
      */
     public void setWineType(WineType wineType) {
         this.wineType = wineType;
@@ -79,7 +80,7 @@ public class WineBase implements Wine {
 
     /**
      * Return the character type of the wine
-     * @return
+     * @return the character type of the wine
      */
     @Override
     public CharacterType getCharacterType() {
@@ -88,7 +89,7 @@ public class WineBase implements Wine {
 
     /**
      * Set the character type of the wine
-     * @param characterType
+     * @param characterType the character type of the wine
      */
     @Override
     public void setCharacterType(CharacterType characterType) {
@@ -97,7 +98,7 @@ public class WineBase implements Wine {
 
     /**
      * Get the name of the wine
-     * @return
+     * @return the name of the wine
      */
     @Override
     public String getName() {
@@ -106,7 +107,7 @@ public class WineBase implements Wine {
 
     /**
      * Set the name of the wine
-     * @param name
+     * @param name the name of the wine
      */
     @Override
     public void setName(String name) {
@@ -115,7 +116,7 @@ public class WineBase implements Wine {
 
     /**
      * Return the vintage of the wine
-     * @return
+     * @return the vintage of the wine
      */
     @Override
     public int getVintage() {
@@ -124,7 +125,7 @@ public class WineBase implements Wine {
 
     /**
      * Set the vintage of the wine
-     * @param vintage
+     * @param vintage the vintage of the wine
      */
     @Override
     public void setVintage(int vintage) {
@@ -133,7 +134,6 @@ public class WineBase implements Wine {
 
     /**
      * Return the date the wine was added to the cellar
-     * @return
      */
     @Override
     public Date getDateAdded() {
@@ -142,7 +142,6 @@ public class WineBase implements Wine {
 
     /**
      * Set the date the wine wine was added to the cellar
-     * @param date
      */
     @Override
     public void setAdded(Date date) {
@@ -151,15 +150,13 @@ public class WineBase implements Wine {
 
     /**
      * Set the consumation statuos of the wine. If true, the wine is consumed
-     * @param consumed
      */
     public void setConsumed(boolean consumed) {
         isConsumed = consumed;
     }
 
     /**
-     * Return True if the wine is consumed
-     * @return
+     * @return True if the wine is consumed
      */
     @Override
     public Boolean isConsumed() {
@@ -183,8 +180,7 @@ public class WineBase implements Wine {
     }
 
     /**
-     * Return text notes for the wine
-     * @return
+     * @return text notes for the wine
      */
     @Override
     public String getNotes() {
@@ -193,24 +189,10 @@ public class WineBase implements Wine {
 
     /**
      * Save text notes for the wine
-     * @param notes
+     * @param notes text notes for the wine
      */
     @Override
     public void setNotes(String notes) {
         this.notes = notes;
     }
-
-    /**
-     * This list of values is useful for populating a list of wines.
-     * @return
-     */
-    public ArrayList<String> getRowStrings() {
-        ArrayList<String> result = new ArrayList<>();
-        result.add(name);
-        result.add(wineType.toString());
-        result.add(Integer.toString(vintage));
-        result.add(characterType.toString());
-        return result;
-    }
-
 }
