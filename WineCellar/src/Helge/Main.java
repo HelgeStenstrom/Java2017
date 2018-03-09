@@ -20,21 +20,7 @@ public class Main extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws Exception{
-        ListController lc = new ListController(primaryStage);
-    }
-
-    /**
-     * This method sets up the first window (stage) that the user sees.
-     * It's problably placed here by the IDE, but not used any longer.
-     * There is a similar method elsewhere that is used instead.
-     * @param primaryStage
-     * @throws java.io.IOException
-     */
-    private void setupStage(Stage primaryStage) throws java.io.IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("mockups/WineListForm.fxml"));
-        primaryStage.setTitle("Vinkällaren");
-        primaryStage.setScene(new Scene(root)); //, 300, 275));
-        primaryStage.show();
+        new ListController(primaryStage);
     }
 
 
